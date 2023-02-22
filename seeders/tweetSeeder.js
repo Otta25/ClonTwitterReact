@@ -28,10 +28,16 @@ module.exports = async () => {
 
     // Añadir el tweet al array de tweets y al array de tweets del usuario
     tweets.push(tweet);
-    user.tweets.push(tweet);
 
     // Guardar los cambios en la base de datos para el usuario
     await user.save();
+  }
+
+  for (const tweet of tweets) {
+    const randomNumber = faker.datatype.number({ min: 1, max: 10 });
+    const randomUser = await User.findOne().skip(randomNumber);
+    tweet.userId = randomUser;
+    randomUser.tweets.push(tweet);
   }
 
   // Insertar todos los tweets creados a la vez en la base de datos
