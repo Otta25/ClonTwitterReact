@@ -22,5 +22,20 @@ module.exports = async () => {
   /**
    * Escribir código del seeder aquí...
    */
+  const users = [];
+
+  for (let i = 1; i < 10; i++) {
+    users.push({
+      firstname: faker.name.firstName(),
+      lastname: faker.name.lastName(),
+      username: faker.internet.userName(),
+      email: faker.internet.email(),
+      bio: faker.lorem.paragraph(),
+      photoProfile: faker.image.avatar(),
+    });
+  }
+
+  await User.insertMany(users);
+
   console.log("[Database] Se corrió el seeder de Users.");
 };

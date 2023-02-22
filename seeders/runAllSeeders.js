@@ -30,6 +30,8 @@ async function runAllSeeders() {
 
   await require("./userSeeder")();
 
+  await require("./tweetSeeder")();
+
   /**
    * Aquí se pueden ejectuar otros seeders que hayan en el sistema.
    * Por ejemplo, si se tuviesen seeders para los artículos y para los
