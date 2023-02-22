@@ -1,4 +1,3 @@
-const { STRING } = require("sequelize");
 const { mongoose, Schema } = require("../db");
 
 // Crear esquema y modelo User...
@@ -10,6 +9,7 @@ const tweetSchema = new Schema({
   },
   date: Date,
   likes: Number,
+  author: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
 const Tweet = mongoose.model("Tweet", tweetSchema);

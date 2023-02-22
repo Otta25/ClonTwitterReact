@@ -9,10 +9,12 @@ const userSchema = new Schema({
   email: String,
   bio: String,
   photoProfile: String,
-  tweet: {
-    type: Schema.Types.ObjectId,
-    ref: "Tweet",
-  },
+  tweets: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Tweet",
+    },
+  ],
   followers: {
     type: Schema.Types.ObjectId,
     ref: "User",

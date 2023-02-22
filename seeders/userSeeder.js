@@ -29,6 +29,7 @@ module.exports = async () => {
       firstname: faker.name.firstName(),
       lastname: faker.name.lastName(),
       username: faker.internet.userName(),
+
       email: faker.internet.email(),
       bio: faker.lorem.paragraph(),
       photoProfile: faker.image.avatar(),
