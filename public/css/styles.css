@@ -1,1 +1,5 @@
 /* Colocar aquí CSS "propio". */
+
+body {
+  font-family: "Inter", sans-serif;
+}
