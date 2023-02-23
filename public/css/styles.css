@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+body {
+  font-family: "Inter", sans-serif;
+}
+
 /* Navbar */
 
 #main-navbar {
@@ -115,11 +119,9 @@
 
 /* SIGN UP CSS */
 
-+ .white {
+.white {
   color: white;
 }
-
-/* SIGN UP FORM CSS */
 
 .sign-form-body {
   background-color: #074874;
