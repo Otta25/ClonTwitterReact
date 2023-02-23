@@ -118,4 +118,8 @@ a {
   font-size: 18px;
   font-weight: 600;
   margin-left: 1rem;
+  width: 3.5vw;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0;
+  border-bottom: solid 5px #068ddf;
 }
