@@ -23,20 +23,26 @@ module.exports = async () => {
    * Escribir código del seeder aquí...
    */
   const users = [];
-
-  for (let i = 1; i < 10; i++) {
-    users.push({
+  const totalUsers = 10;
+  for (let i = 1; i < totalUsers; i++) {
+    const user = new User({
       firstname: faker.name.firstName(),
       lastname: faker.name.lastName(),
       username: faker.internet.userName(),
-
       email: faker.internet.email(),
       bio: faker.lorem.paragraph(),
       photoProfile: faker.image.avatar(),
     });
+    users.push(user);
+  }
+
+  for (const user of users) {
+    const randomUser = users[faker.datatype.number({ min: 0, max: totalUsers - 1 })];
+    user.following.push(randomUser);
+    console.log(randomUser);
+    randomUser.followers.push(user);
   }
 
   await User.insertMany(users);
-
   console.log("[Database] Se corrió el seeder de Users.");
 };
