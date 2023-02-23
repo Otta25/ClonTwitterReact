@@ -1,5 +1,112 @@
 /* Colocar aquí CSS "propio". */
+* {
+  margin: 0;
+  padding: 0;
+}
 
-body {
-  font-family: "Inter", sans-serif;
+#main-navbar {
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  background-color: white;
+}
+
+#nav-icons {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+#main-navbar li {
+  list-style: none;
+  width: 10vw;
+  height: 3rem;
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  transition: ease-in-out 0.2s;
+}
+
+#main-navbar li span {
+  display: flex;
+  font-size: large;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+}
+
+#main-navbar li img {
+  margin-right: 2rem;
+}
+
+#main-navbar li:hover {
+  cursor: pointer;
+}
+
+#tweet-btn {
+  background-color: #1d9bf0;
+  width: 12vw;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#tweet-btn img {
+  display: none;
+}
+
+#tweet-btn span {
+  background-color: #1d9bf0;
+  width: 10vw;
+  border-radius: 2rem;
+  color: white;
+}
+
+@media (max-width: 1000px) {
+  #main-navbar {
+    width: 4vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+  }
+
+  #nav-icons {
+    padding: 0;
+  }
+
+  #main-navbar li {
+    list-style: none;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: ease-in-out 0.2s;
+  }
+
+  #main-navbar li img {
+    margin: 0;
+  }
+
+  #main-navbar li:hover {
+    background-color: rgba(128, 128, 128, 0.217);
+    cursor: pointer;
+  }
+
+  #main-navbar li span {
+    display: none;
+  }
+  #tweet-btn img {
+    display: flex;
+  }
+
+  #tweet-btn span {
+    display: none;
+  }
 }

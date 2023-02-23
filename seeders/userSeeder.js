@@ -39,7 +39,6 @@ module.exports = async () => {
   for (const user of users) {
     const randomUser = users[faker.datatype.number({ min: 0, max: totalUsers - 1 })];
     user.following.push(randomUser);
-    console.log(randomUser);
     randomUser.followers.push(user);
   }
 
