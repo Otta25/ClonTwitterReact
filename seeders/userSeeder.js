@@ -24,7 +24,7 @@ module.exports = async () => {
    */
   const users = [];
   const totalUsers = 10;
-  for (let i = 1; i < totalUsers; i++) {
+  for (let i = 0; i < totalUsers; i++) {
     const user = new User({
       firstname: faker.name.firstName(),
       lastname: faker.name.lastName(),

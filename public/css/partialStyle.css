@@ -1,26 +1,30 @@
-.card-css{
-    width: 22rem; 
-    background-color: #f7f9f9
+.card-css {
+  width: 22rem;
+  background-color: #f7f9f9;
 }
 
-.font-grey{
-    color: grey
+ul {
+  list-style: none;
 }
 
-.btn-skyblue{
-    color: aliceblue;
-    background-color: #1d9bf0
+.font-grey {
+  color: grey;
 }
 
-.fontsize-grey{
-    color: grey;
-    font-size: 0.9rem
+.btn-skyblue {
+  color: aliceblue;
+  background-color: #1d9bf0;
 }
 
-.inline-b{
-    display: inline-block;
+.fontsize-grey {
+  color: grey;
+  font-size: 0.9rem;
 }
 
-.like-color{
-    color: #F91894;
+.inline-b {
+  display: inline-block;
+}
+
+.like-color {
+  color: #f91894;
 }
