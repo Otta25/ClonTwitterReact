@@ -16,3 +16,11 @@
     color: grey;
     font-size: 0.9rem
 }
+
+.inline-b{
+    display: inline-block;
+}
+
+.like-color{
+    color: #F91894;
+}
