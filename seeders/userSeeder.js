@@ -25,15 +25,23 @@ module.exports = async () => {
   const users = [];
 
   for (let i = 1; i < 10; i++) {
-    users.push({
+    const user = new User({
       firstname: faker.name.firstName(),
       lastname: faker.name.lastName(),
       username: faker.internet.userName(),
-
+      password: "1234",
       email: faker.internet.email(),
       bio: faker.lorem.paragraph(),
       photoProfile: faker.image.avatar(),
     });
+
+    users.push(user);
+  }
+
+  for (user of users) {
+    const randomUser = users[faker.datatype.number({ min: 0, max: users.length - 1 })];
+    user.following.push(randomUser);
+    randomUser.followers.push(user);
   }
 
   await User.insertMany(users);

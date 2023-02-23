@@ -18,17 +18,24 @@ module.exports = async () => {
       content: faker.lorem.sentence(5),
       date: new Date(),
       likes: faker.datatype.number({ min: 0, max: 10 }),
-      author: users[Math.floor(Math.random() * 10)],
     });
 
     tweets.push(tweet);
-    user.tweets.push(tweet);
   }
+
+  for (const tweet of tweets) {
+    const randomNumber = faker.datatype.number({ min: 1, max: 10 });
+    const randomUser = await User.findOne().skip(randomNumber);
+    tweet.author = randomUser;
+    randomUser.tweets.push(tweet);
+    await randomUser.save();
+  }
+
   //const firstAuthor = await Tweet.find().populate("author");
 
   //console.log(firstAuthor[3].author.firstname);
 
   await Tweet.insertMany(tweets);
-  await user.save();
+
   console.log("[Database] Se corrió el seeder de Users.");
 };
