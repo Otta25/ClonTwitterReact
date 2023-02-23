@@ -18,7 +18,7 @@ body {
 }
 
 #nav-icons {
-  padding: 0;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: left;
@@ -28,7 +28,7 @@ body {
   list-style: none;
   width: 10vw;
   height: 3rem;
-  margin: 1rem;
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: left;
@@ -73,7 +73,7 @@ body {
 
 @media (max-width: 1000px) {
   #main-navbar {
-    width: 4vw;
+    width: 15vw;
     height: 100vh;
     position: fixed;
     display: flex;
