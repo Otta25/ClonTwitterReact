@@ -47,11 +47,10 @@
             </div>
           </div>
           <div style="width: 70%">Twees</div>
-          <div>
-            <% for(let i=0;i<tweets.length;i++){%>
-
-            <p id="tweets-handler"><%=tweets[i].content%></p>
-            <% } %>
+          <div class="mt-5">
+            <% for (const tweet of tweets) { %>     
+               <%- include("../partials/tweet", {tweet}) %> 
+               <% } %>
           </div>
         </div>
         <div class="col-3 mt-3">

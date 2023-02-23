@@ -2,22 +2,19 @@
   <div class="my-3">
     <div class="container">
       <div class="row g-0">
-        <div class="col-1 g-0">
+        <div class="col-2 g-0">
           <div class="d-flex justify-content-center">
-            <img src="img/avatar.svg" alt="" srcset="" />
+            <img src="/img/avatar.svg" alt="" srcset="" />
           </div>
         </div>
         <div class="col">
-          <h5 class="inline-b fw-semibold mb-1">Pepe Milanesa</h5>
-          <p class="inline-b font-grey mb-1">@pepemilanesa · 6h</p>
-          <p class="card-text">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis magnam, nobis eum fuga
-            sunt labore. Eos tempora repudiandae distinctio, qui libero dicta error odio doloremque
-            quaerat et reprehenderit, quidem nam?
-          </p>
+          <h5 class="inline-b fw-semibold mb-1"><%=user.firstname%></h5>
+          <p class="inline-b font-grey mb-1"><%=user.username%></p>
+          <p class="card-text"><%=tweet.content%></p>
           <div class="d-flex justify-content-between">
-            <a href=""><img src="img/heart.svg" alt="" srcset="" /></a>
-            <p class="ms-1 inline-b like-color m-0 me-auto">9</p>
+            <a href=""><img src="/img/heart.svg" alt="" srcset="" /></a>
+            <p class="ms-1 inline-b like-color m-0 me-auto"><%=tweet.likes%></p>
+            <a class="me-2" href=""><img src="/img/delete.svg" alt="" srcset="" /></a>
           </div>
         </div>
       </div>
