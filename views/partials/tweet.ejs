@@ -8,8 +8,8 @@
           </div>
         </div>
         <div class="col">
-          <h5 class="inline-b fw-semibold mb-1"><%=user.firstname%></h5>
-          <p class="inline-b font-grey mb-1"><%=user.username%></p>
+          <h5 class="inline-b fw-semibold mb-1"><%=tweetAuthor.author.firstname%></h5>
+          <p class="inline-b font-grey mb-1">@<%= tweetAuthor.author.username%></p>
           <p class="card-text"><%=tweet.content%></p>
           <div class="d-flex justify-content-between">
             <a href=""><img src="/img/heart.svg" alt="" srcset="" /></a>
