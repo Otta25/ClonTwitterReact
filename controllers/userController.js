@@ -2,8 +2,8 @@ const User = require("../models/User");
 
 // Display a listing of the resource.
 async function index(req, res) {
-  const users = await User.find();
-  res.render("pages/profile");
+  const user = await User.findOne();
+  res.render("pages/profile", { user });
 }
 
 // Display the specified resource.
