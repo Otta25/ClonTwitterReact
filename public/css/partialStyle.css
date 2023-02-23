@@ -35,3 +35,8 @@ ul {
 .like-color {
   color: #f91894;
 }
+
+.principal-text{
+    font-size: 1.3rem;
+    font-weight: 600;
+}
