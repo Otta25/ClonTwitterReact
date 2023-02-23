@@ -46,10 +46,13 @@
               </div>
             </div>
           </div>
-          <div style="width: 70%">
-            <p id="tweets-handler">Tweets</p>
+          <div style="width: 70%">Twees</div>
+          <div>
+            <% for(let tweet of tweets){%>
+
+            <p id="tweets-handler"><%=tweet.firstname%></p>
+            <% } %>
           </div>
-          <div id="bottom-content"></div>
         </div>
         <div class="col-3 mt-3">
           <%- include("../partials/happening") %> <br />

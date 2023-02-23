@@ -10,7 +10,9 @@ async function index(req, res) {
 async function show(req, res) {
   const userId = req.params.id;
   const user = await User.findById(userId);
-  res.render("pages/profile", { user });
+  const tweets = await User.find({ author: userId });
+  console.log(tweets);
+  res.render("pages/profile", { user, tweets });
 }
 
 // Show the form for creating a new resource
