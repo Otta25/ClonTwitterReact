@@ -11,7 +11,7 @@
 
 #blue-div {
   width: 100%;
-  height: 160px;
+  height: 260px;
   position: relative;
 }
 
@@ -31,8 +31,8 @@
 }
 
 #photo-profile {
-  width: 100px;
-  height: 100px;
+  width: 130px;
+  height: 130px;
   border: solid white 4px;
   border-radius: 50%;
   object-fit: cover;
@@ -51,18 +51,19 @@ a {
   margin-top: 30px;
   position: absolute;
   bottom: -3rem;
-  right: 0;
+  right: 1rem;
 }
 
 #follows-numbers {
   position: absolute;
-  bottom: -6rem;
+  bottom: -7.3rem;
   right: 0;
 }
 
 #username {
   font-weight: 600;
   margin-bottom: 0;
+  font-size: 24px;
 }
 
 #bottom-div {
@@ -73,6 +74,7 @@ a {
 
 #follows {
   margin-top: 22px;
+  margin-right: 1rem;
 }
 
 .number {
@@ -105,4 +107,15 @@ a {
 #tweet-image {
   width: 70px;
   height: 70px;
+}
+
+#tweet-container {
+  margin-top: 10rem;
+  width: 100%;
+}
+
+#tweet-container h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-left: 1rem;
 }
