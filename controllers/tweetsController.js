@@ -1,16 +1,15 @@
-const User = require("../models/User");
-
-// Display a listing of the resource.
-async function index(req, res) {
-  const users = await User.find();
-  res.json(users);
-}
+const Tweet = require("../models/Tweet");
 
 // Display the specified resource.
+async function index(req, res) {
+  const tweets = await Tweet.find().populate("author");
+  res.json(tweets);
+}
+
 async function show(req, res) {
-  const userId = req.params.id;
-  const user = await User.findById(userId);
-  res.json(user);
+  const tweetId = req.params.id;
+  const tweet = await Tweet.findById(tweetId);
+  res.json(tweet);
 }
 
 // Show the form for creating a new resource

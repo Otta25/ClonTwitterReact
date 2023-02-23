@@ -18,6 +18,8 @@ const userRoutes = require("./userRoutes");
  */
 
 const publicRoutes = require("./publicRoutes");
+const tweetsRoutes = require("./tweetsRoutes");
+
 // const privateRoutes = require("./privateRoutes");
 
 module.exports = (app) => {
@@ -27,7 +29,7 @@ module.exports = (app) => {
    * nombres de variables, funciones, etc, que siempre se recomienda que estén
    * en inglés.
    */
-
+  app.use("/tweets", tweetsRoutes);
   app.use("/usuarios", userRoutes);
   app.use("/", publicRoutes);
 };
