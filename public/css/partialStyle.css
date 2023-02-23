@@ -14,6 +14,13 @@ ul {
 .btn-skyblue {
   color: aliceblue;
   background-color: #1d9bf0;
+  transition: ease-in-out 0.2s;
+  font-weight: 400;
+}
+
+.btn-skyblue:hover {
+  color: aliceblue;
+  background-color: #61b6ee;
 }
 
 .fontsize-grey {
@@ -27,4 +34,9 @@ ul {
 
 .like-color {
   color: #f91894;
+}
+
+.principal-text{
+    font-size: 1.3rem;
+    font-weight: 600;
 }
