@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Tweet = require("../models/Tweet");
 
 // Display a listing of the resource.
 async function index(req, res) {
@@ -10,8 +11,9 @@ async function index(req, res) {
 async function show(req, res) {
   const userId = req.params.id;
   const user = await User.findById(userId);
-  const tweets = await User.find({ author: userId });
+  const tweets = await Tweet.find({ author: userId });
   console.log(tweets);
+  console.log(tweets[1].content);
   res.render("pages/profile", { user, tweets });
 }
 

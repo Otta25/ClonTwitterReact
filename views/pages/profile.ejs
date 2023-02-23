@@ -48,9 +48,9 @@
           </div>
           <div style="width: 70%">Twees</div>
           <div>
-            <% for(let tweet of tweets){%>
+            <% for(let i=0;i<tweets.length;i++){%>
 
-            <p id="tweets-handler"><%=tweet.firstname%></p>
+            <p id="tweets-handler"><%=tweets[i].content%></p>
             <% } %>
           </div>
         </div>
