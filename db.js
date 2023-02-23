@@ -7,7 +7,7 @@
  *
  * Los modelos deberán requerir a este archivo haciendo:
  * const { mongoose, Schema } = require("../db");
- *
+ *Prueba
  */
 
 const mongoose = require("mongoose");
