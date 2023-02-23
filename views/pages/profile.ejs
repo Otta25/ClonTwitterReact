@@ -17,8 +17,9 @@
   <body>
     <div class="container-fluid">
       <div class="row">
+        <div class="col-1"></div>
         <div class="col-2 ps-5"><%-include('../partials/navbarSide') %></div>
-        <div class="col-7">
+        <div class="col-5">
           <div class="container" id="main-cont">
             <div class="bg-primary" id="blue-div">
               <div class="white-div" id="white-div">
@@ -34,7 +35,7 @@
                   <p class="grey-letter">@<%=user.username %></p>
                 </div>
               </div>
-              <button class="btn btn-primary" id="follow-btn">
+              <button class="btn btn-skyblue" id="follow-btn">
                 <a href="">Follow</a>
               </button>
               <div id="follows-numbers" style="margin-left: auto">
@@ -54,6 +55,7 @@
           <%- include("../partials/happening") %> <br />
           <%- include("../partials/toFollow") %>
         </div>
+        <div class="col-1"></div>
       </div>
     </div>
   </body>
