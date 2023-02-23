@@ -4,21 +4,24 @@
     <%- include("../partials/meta") %>
   </head>
 
-  <body>
-    <div class="container">
+  <body class="sign-form-body d-flex align-items-center">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col"></div>
-        <div class="col">
-          <div class="col">
-            <h1 class="my-4">Sign Up</h1>
+        <div class="col blueSideCol rounded-start white">
+          <i class="bi bi-twitter"></i>
+          <h2>Hi! Welcome to Twitter Clone 👋</h2>
+        </div>
+        <div class="col bg-white rounded-end py-3">
+          <div class="container">
+            <h1 class="mb-2">Sign Up</h1>
             <p>Create and account and start using Twitter</p>
-            <form action="" method="get">
-              <input type="text" class="form-control" />
-              <input type="text" class="form-control" />
-              <input type="email" class="form-control" />
-              <input type="text" class="form-control" />
-              <input type="form" class="form-control" />
-              <input type="password" class="form-control" />
+            <form action="" method="get" class="sign-up-form">
+              <input type="text" class="form-control" placeholder="First name" />
+              <input type="text" class="form-control" placeholder="Last name" />
+              <input type="email" class="form-control" placeholder="Email" />
+              <input type="text" class="form-control" placeholder="Username" />
+              <input type="file" class="form-control" />
+              <input type="password" class="form-control" placeholder="Password" />
               <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>
           </div>
