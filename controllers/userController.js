@@ -10,7 +10,7 @@ async function index(req, res) {
 async function show(req, res) {
   const userId = req.params.id;
   const user = await User.findById(userId);
-  res.json(user);
+  res.render("pages/profile", { user });
 }
 
 // Show the form for creating a new resource

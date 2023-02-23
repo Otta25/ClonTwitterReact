@@ -10,8 +10,8 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="css/styleProfile.css" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="/../css/styles.css" />
+    <link rel="stylesheet" href="/../css/styleProfile.css" />
   </head>
   <body>
     <div class="container" id="main-cont">
@@ -24,12 +24,13 @@
       </div>
       <div class="white-div" id="bottom-div">
         <div>
-          <h5 id="username">Leia Organa</h5>
-          <p class="grey-letter">@princesaleia</p>
+          <h5 id="username"><%=user.firstname%></h5>
+          <p class="grey-letter">@<%=user.username %></p>
         </div>
         <div style="margin-left: auto">
           <p id="follows" class="grey-letter">
-            <span class="number">19</span> Following <span class="number">123</span> Followers
+            <span class="number"><%=user.following.length %></span> Following
+            <span class="number"><%=user.followers.length %></span> Followers
           </p>
         </div>
       </div>
@@ -39,13 +40,9 @@
       <div id="bottom-content">
         <div id="tweet-image"><img src="" alt="fede" /></div>
         <div id="tweet">
-          <span class="fw-bold">Leia Organa </span
-          ><span class="grey-letter fw-none">@princesaleia</span>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error doloribus accusantium
-            pariatur corrupti soluta, minima quos quisquam laboriosam id fugit maxime beatae maiores
-            rem ducimus minus odio tempore velit ad.
-          </p>
+          <span class="fw-bold"><%=user.firstname %> </span
+          ><span class="grey-letter fw-none">@<%=user.username %></span>
+          <p><%=user.bio %></p>
         </div>
       </div>
     </div>
