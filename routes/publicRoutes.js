@@ -4,6 +4,10 @@ const pagesController = require("../controllers/pagesController");
 
 router.get("/", pagesController.showHome);
 
+router.get("/sign-up", function (req, res) {
+  res.status(404).render("pages/sign-up");
+});
+
 router.get("*", function (req, res) {
   res.status(404).render("pages/404");
 });
