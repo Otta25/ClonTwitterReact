@@ -43,7 +43,7 @@ body {
 #main-navbar li span {
   display: flex;
   font-size: large;
-  font-weight: 700;
+  font-weight: 400;
   align-items: center;
   justify-content: center;
 }
