@@ -8,7 +8,7 @@ router.get("/", pagesController.showHome);
 router.get("/login", pagesController.login);
 
 router.get("/sign-up", function (req, res) {
-  res.status(404).render("pages/sign-up");
+  res.render("pages/sign-up");
 });
 
 router.post("/sign-up", pagesController.store);
