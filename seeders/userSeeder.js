@@ -35,8 +35,9 @@ module.exports = async () => {
       lastname: lastname,
       username: faker.internet.userName(firstname, lastname),
       email: faker.internet.email(firstname, lastname, "hack.dev"),
-      bio: faker.lorem.paragraph(),
-      photoProfile: faker.image.avatar(),
+      bio: faker.lorem.sentences(2),
+      photoProfile: "2fc67ba844840bcd35d358b00.jpeg",
+      photoPortada: "portada.jpg",
       password: password,
     });
     users.push(user);

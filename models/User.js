@@ -7,7 +7,10 @@ const userSchema = new Schema({
   lastname: String,
   username: String,
   email: String,
-  bio: String,
+  bio: {
+    type: String,
+    maxlength: 140,
+  },
   photoProfile: String,
   photoPortada: String,
   password: String,

@@ -8,6 +8,6 @@ router.get("/:id", tweetsController.show);
 router.post("/", tweetsController.store);
 // router.get("/editar/:id", tweetsController.edit);
 // router.patch("/:id", tweetsController.update);
-// router.delete("/:id", tweetsController.destroy);
+router.get("/borrar/:id", tweetsController.destroy);
 
 module.exports = router;

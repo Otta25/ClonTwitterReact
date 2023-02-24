@@ -38,7 +38,12 @@ async function edit(req, res) {}
 async function update(req, res) {}
 
 // Remove the specified resource from storage.
-async function destroy(req, res) {}
+
+async function destroy(req, res) {
+  const tweetId = req.params.id;
+  const tweet = await Tweet.findByIdAndDelete(tweetId);
+  res.json(`Se borro correctamente el tweet ${tweetId}`);
+}
 
 // Otros handlers...
 // ...
