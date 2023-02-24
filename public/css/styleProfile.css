@@ -219,3 +219,7 @@
     background-position: -2800px;
   }
 }
+
+a {
+  text-decoration: none;
+}

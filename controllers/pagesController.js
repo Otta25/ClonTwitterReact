@@ -4,6 +4,8 @@ const Tweet = require("../models/Tweet");
 
 async function showHome(req, res) {
   const follows = req.user.following;
+  follows.push(req.user._id);
+
   const tweets = await Tweet.find({
     author: follows,
   })
