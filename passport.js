@@ -13,12 +13,9 @@ module.exports = (app) => {
         passwordField: "password",
       },
       async function (username, password, cb) {
-        // Este código sólo se llama si username y password están definidos.
-        console.log("[LocalStrategy] Username:", username); // To-Do: Borrar este `console.log` luego de hacer pruebas.
-        console.log("[LocalStrategy] Password:", password); // To-Do: Borrar este `console.log` luego de hacer pruebas.
-
         try {
-          const user = await User.findOne({ username: username });
+          const user = await User.findOne({ email: username });
+          console.log(user);
           if (!user) {
             console.log("Nombre de usuario no existe.");
             return cb(null, false, { message: "Credenciales incorrectas." });
@@ -37,15 +34,15 @@ module.exports = (app) => {
     ),
   );
 
-  passport.serializeUser((user, done) => {
+  passport.serializeUser((user, cb) => {
     console.log("[Passport] Serialize User");
-    cb(null, user.id);
+    cb(null, user._id);
   });
 
-  passport.deserializeUser(async (id, cb) => {
+  passport.deserializeUser(async (_id, cb) => {
     console.log("[Passport] Deserialize User");
     try {
-      const user = await User.findByPk(id);
+      const user = await User.findById(_id);
       cb(null, user);
     } catch (err) {
       cb(err);

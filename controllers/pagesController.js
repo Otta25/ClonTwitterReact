@@ -12,10 +12,6 @@ async function login(req, res) {
   res.render("pages/log-in");
 }
 
-async function login(req, res) {
-  res.render("pages/log-in");
-}
-
 async function showContact(req, res) {
   res.render("pages/contact");
 }

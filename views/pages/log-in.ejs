@@ -17,9 +17,9 @@
           <div class="container">
             <h1 class="mb-2 fw-semibold fs-2">Log In</h1>
             <p>Ready to start using Twitter?</p>
-            <form action="" method="get" class="sign-up-form">
-              <input type="email" class="form-control" placeholder="Email" />
-              <input type="password" class="form-control" placeholder="Password" />
+            <form action="/login" method="POST" class="sign-up-form">
+              <input type="email" name="email" class="form-control" placeholder="Email" />
+              <input type="password" name="password" class="form-control" placeholder="Password" />
               <button type="submit" class="btn btn-twitter">Login</button>
               <span>Don't have an account? <a href="/sign-up">Sign up</a></span>
             </form>
