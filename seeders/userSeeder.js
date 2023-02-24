@@ -28,11 +28,13 @@ module.exports = async () => {
 
   for (let i = 0; i < totalUsers; i++) {
     let password = await bcrypt.hash("1234", 8);
+    let firstname = faker.name.firstName();
+    let lastname = faker.name.lastName();
     const user = new User({
-      firstname: faker.name.firstName(),
-      lastname: faker.name.lastName(),
-      username: faker.internet.userName(),
-      email: faker.internet.email(),
+      firstname: firstname,
+      lastname: lastname,
+      username: faker.internet.userName(firstname, lastname),
+      email: faker.internet.email(firstname, lastname, "hack.dev"),
       bio: faker.lorem.paragraph(),
       photoProfile: faker.image.avatar(),
       password: password,
