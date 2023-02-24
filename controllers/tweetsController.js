@@ -38,7 +38,10 @@ async function edit(req, res) {}
 async function update(req, res) {}
 
 // Remove the specified resource from storage.
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 async function destroy(req, res) {
   const tweetId = req.params.id;
   await Tweet.findByIdAndDelete(tweetId);
@@ -46,6 +49,7 @@ async function destroy(req, res) {
 
   res.redirect(`/usuarios/${req.user.username}`);
 }
+<<<<<<< Updated upstream
 
 async function Addlike(req, res) {
   let tweet = req.params.id;
@@ -61,6 +65,8 @@ async function Addlike(req, res) {
     res.send("se dio like ");
   }
 }
+=======
+>>>>>>> Stashed changes
 
 // Otros handlers...
 // ...
