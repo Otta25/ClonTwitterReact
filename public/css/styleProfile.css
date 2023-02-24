@@ -45,6 +45,13 @@ a {
   color: white;
 }
 
+#profile-tweet-pic {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  width: 5rem;
+}
+
 #follow-btn {
   border-radius: 20px;
   width: 80px;
@@ -122,4 +129,85 @@ a {
   padding-bottom: 0.5rem;
   margin-bottom: 0;
   border-bottom: solid 5px #068ddf;
+}
+
+#interaction-list {
+  padding-left: 0;
+  display: flex;
+}
+
+#interact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: none;
+}
+
+#interact-icon ul {
+  display: flex;
+  flex-direction: row;
+}
+
+#retweet-icon svg {
+  fill: rgb(45, 45, 45);
+  width: 1.2rem;
+  margin-left: 2rem;
+}
+
+#comment-icon svg {
+  fill: rgb(45, 45, 45);
+  width: 1.2rem;
+  margin-left: 4rem;
+}
+
+#interaction-icon {
+  fill: rgb(45, 45, 45);
+  width: 1.2rem;
+  margin-left: 2rem;
+}
+
+#corazon {
+  transition: ease-in-out 0.1s;
+}
+
+#toggle {
+  opacity: 0;
+  transform: scale(3);
+  position: absolute;
+}
+
+#heart-container {
+  position: relative;
+  cursor: pointer;
+  top: 6px;
+  transform: scale(0.7);
+}
+
+#tweet-likes {
+  position: absolute;
+  right: -3.5rem;
+  top: -2px;
+  transform: scale(1.3);
+}
+
+#twitter-heart {
+  position: absolute;
+  background: url("https://abs.twimg.com/a/1454637594/img/t1/web_heart_animation.png");
+  background-position: 0px;
+  background-repeat: no-repeat;
+  height: 100px;
+  width: 100px;
+  top: -40px;
+  left: -40px;
+  pointer-events: none;
+}
+
+#toggle:checked + #twitter-heart {
+  animation: heart-animate 0.8s steps(28) forwards;
+}
+
+@keyframes heart-animate {
+  100% {
+    background-position: -2800px;
+  }
 }

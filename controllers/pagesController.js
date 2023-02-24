@@ -20,6 +20,10 @@ async function showHome(req, res) {
   res.render("pages/home");
 }
 
+async function login(req, res) {
+  res.render("pages/log-in");
+}
+
 async function showContact(req, res) {
   res.render("pages/contact");
 }
@@ -39,4 +43,5 @@ module.exports = {
   showHome,
   showContact,
   showAboutUs,
+  login,
 };
