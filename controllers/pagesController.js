@@ -15,9 +15,13 @@
  * En caso de estar creando una API, este controlador carece de sentido y
  * no debería existir.
  */
+const User = require("../models/User");
+const Tweet = require("../models/Tweet");
 
 async function showHome(req, res) {
-  res.render("pages/home");
+  const tweets = await Tweet.find().populate("author");
+
+  res.render("pages/home", { tweets });
 }
 
 async function showContact(req, res) {
