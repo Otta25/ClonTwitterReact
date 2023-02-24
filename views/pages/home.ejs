@@ -30,8 +30,8 @@
 </div>
 <div>
   <h3 class="inline-b fs-5 fw-bold">
-    <span><%=tweets[i].author.firstname  %></span>
-  <span> <%=tweets[i].author.lastname  %></span> </h3>
+    <a href="/usuarios/<%=tweets[i].author.username  %>" style="color: black;"><%=tweets[i].author.firstname  %></a>
+    <a href="/usuarios/<%=tweets[i].author.username  %>" style="color: black;"> <%=tweets[i].author.lastname  %></a>   </h3>
   <p class="inline-b grey-letter"> @<%=tweets[i].author.username  %></p>
   <p ><%=tweets[i].content  %></p>
  
