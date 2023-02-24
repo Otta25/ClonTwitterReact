@@ -26,7 +26,6 @@ async function store(req, res) {
     likes: 0,
     author: req.user._id,
   });
-  console.log(req.body);
 
   res.redirect("/");
 }

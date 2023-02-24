@@ -3,6 +3,4 @@
  * Notar que este código se ejecutará en el navegador.
  */
 
-function activarCorazon() {
-  console.log("hola");
-}
+function activarCorazon() {}

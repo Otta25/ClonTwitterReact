@@ -15,7 +15,6 @@ module.exports = (app) => {
       async function (username, password, cb) {
         try {
           const user = await User.findOne({ email: username });
-          console.log(user);
           if (!user) {
             console.log("Nombre de usuario no existe.");
             return cb(null, false, { message: "Credenciales incorrectas." });

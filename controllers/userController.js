@@ -9,11 +9,11 @@ async function index(req, res) {
 
 // Display the specified resource.
 async function show(req, res) {
-  const userId = req.params.id;
-  const user = await User.findById(userId);
-  const tweets = await Tweet.find({ author: userId });
-  const tweetAuthor = await Tweet.findOne({ author: userId }).populate("author");
-  res.render("pages/profile", { user, tweets, tweetAuthor });
+  const username = req.params.username;
+  const user = await User.findOne({ username: username });
+  const tweets = await Tweet.find({ author: user });
+  const tweetAuthor = await Tweet.findOne({ author: user }).populate("author");
+  res.render("pages/profile", { user, tweets, tweetAuthor, req });
 }
 
 // Show the form for creating a new resource

@@ -5,8 +5,7 @@ const Tweet = require("../models/Tweet");
 async function showHome(req, res) {
   const tweets = await Tweet.find().populate("author").sort({ date: -1 });
   const tweetsLength = Math.min(20, tweets.length);
-  console.log(tweetsLength);
-  res.render("pages/home", { tweets, tweetsLength });
+  res.render("pages/home", { tweets, tweetsLength, req });
 }
 
 async function login(req, res) {
