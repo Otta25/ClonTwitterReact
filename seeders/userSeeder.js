@@ -39,6 +39,7 @@ module.exports = async () => {
       photoProfile: "2fc67ba844840bcd35d358b00.jpeg",
       photoPortada: "portada.jpg",
       password: password,
+      following: users.sort(() => 0.5 - Math.random()).slice(0, 5),
     });
     users.push(user);
   }
@@ -52,6 +53,7 @@ module.exports = async () => {
     photoProfile: "2fc67ba844840bcd35d358b00.jpeg",
     photoPortada: "portada.jpg",
     password: await bcrypt.hash("1234", 8),
+    following: users,
   });
   users.push(adminGladys);
 
