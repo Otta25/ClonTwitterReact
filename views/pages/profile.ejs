@@ -27,9 +27,9 @@
                   </div>
                                 </div>
                                 <% if (user.username !== req.user.username) { %>
-                  <button class="btn btn-skyblue" id="follow-btn">
-                  <a href="">Follow</a>
-                                </button>
+                                  <a href="follow/<%=user.username%>"><button class="btn btn-skyblue" id="follow-btn">
+                                      Follow
+                                </button></a>
                                 <% } %>
                                 <div id="follows-numbers" style="margin-left: auto">
                   <div id="follows" class="grey-letter">
