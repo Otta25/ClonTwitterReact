@@ -28,11 +28,16 @@ body {
   list-style: none;
   width: 10vw;
   height: 3rem;
-  margin-top: 2rem;
+  margin-top: 0.7rem;
   display: flex;
   align-items: center;
   justify-content: left;
   transition: ease-in-out 0.2s;
+}
+
+#main-navbar svg {
+  width: 1.5rem;
+  margin-right: 2rem;
 }
 
 #main-navbar li span {
