@@ -17,6 +17,10 @@ body {
   background-color: white;
 }
 
+#main-navbar a {
+  color: black;
+}
+
 #nav-icons {
   padding: 2rem;
   display: flex;
