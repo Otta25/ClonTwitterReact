@@ -8,7 +8,7 @@ const tweetSchema = new Schema({
     maxlength: 140,
   },
   date: Date,
-  likes: Number,
+  likes: [String],
   author: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
