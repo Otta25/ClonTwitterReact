@@ -4,8 +4,10 @@ const Tweet = require("../models/Tweet");
 
 async function showHome(req, res) {
   const tweets = await Tweet.find().populate("author");
+  const tweetsLength = Math.min(20, tweets.length);
 
-  res.render("pages/home", { tweets });
+  console.log(tweetsLength);
+  res.render("pages/home", { tweets, tweetsLength });
 }
 
 async function login(req, res) {
@@ -24,21 +26,22 @@ async function store(req, res) {
   console.log(__dirname);
   const form = formidable({
     multiples: true,
-    uploadDir: __dirname + "../public/img",
+    uploadDir: __dirname + "/../public/img",
     keepExtensions: true,
   });
   form.parse(req, async (err, fields, files) => {
-    let user = await User.create({
+    const user = await User.create({
       firstname: fields.firstname,
       lastname: fields.lastname,
       email: fields.email,
       username: fields.username,
       photoProfile: files.file.newFilename,
-      photoPortada: files.photoPortada.newFilename,
+      photoPortada: files.file2.newFilename,
       password: fields.password,
     });
     await user.save();
   });
+  console.log("fields");
   return res.redirect("/");
 }
 
