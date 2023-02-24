@@ -29,6 +29,7 @@ async function store(req, res) {
     keepExtensions: true,
   });
   form.parse(req, async (err, fields, files) => {
+    let password = await bcrypt.hash(fields.password, 8);
     const user = await User.create({
       firstname: fields.firstname,
       lastname: fields.lastname,
@@ -36,7 +37,7 @@ async function store(req, res) {
       username: fields.username,
       photoProfile: files.file.newFilename,
       photoPortada: files.file2.newFilename,
-      password: fields.password,
+      password: password,
     });
 
     await user.save();

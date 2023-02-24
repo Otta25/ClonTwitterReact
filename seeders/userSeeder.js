@@ -35,13 +35,25 @@ module.exports = async () => {
       lastname: lastname,
       username: faker.internet.userName(firstname, lastname),
       email: faker.internet.email(firstname, lastname, "hack.dev"),
-      bio: faker.lorem.sentences(2),
+      bio: faker.lorem.sentences(1),
       photoProfile: "2fc67ba844840bcd35d358b00.jpeg",
       photoPortada: "portada.jpg",
       password: password,
     });
     users.push(user);
   }
+
+  let adminGladys = new User({
+    firstname: "Gladys",
+    lastname: "Manya",
+    username: "Gladys.Manya",
+    email: "gladys@admin",
+    bio: "Abuela. Manya. Diosa.",
+    photoProfile: "2fc67ba844840bcd35d358b00.jpeg",
+    photoPortada: "portada.jpg",
+    password: await bcrypt.hash("1234", 8),
+  });
+  users.push(adminGladys);
 
   for (const user of users) {
     const randomUser = users[faker.datatype.number({ min: 0, max: totalUsers - 1 })];
