@@ -3,8 +3,14 @@ const User = require("../models/User");
 const Tweet = require("../models/Tweet");
 
 async function showHome(req, res) {
-  const tweets = await Tweet.find().populate("author").sort({ date: -1 });
+  const follows = req.user.following;
+  const tweets = await Tweet.find({
+    author: follows,
+  })
+    .populate("author")
+    .sort({ date: -1 });
   const tweetsLength = Math.min(20, tweets.length);
+
   res.render("pages/home", { tweets, tweetsLength, req });
 }
 
