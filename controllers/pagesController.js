@@ -1,5 +1,6 @@
 const formidable = require("formidable");
 const User = require("../models/User");
+const Tweet = require("../models/Tweet");
 
 async function showHome(req, res) {
   const tweets = await Tweet.find().populate("author");
