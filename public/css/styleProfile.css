@@ -117,8 +117,14 @@ a {
   height: 70px;
 }
 
+#tinny-pic-profile {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
 #tweet-container {
-  margin-top: 10rem;
+  margin-top: 13rem;
   width: 100%;
 }
 

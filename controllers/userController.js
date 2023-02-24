@@ -13,9 +13,6 @@ async function show(req, res) {
   const user = await User.findById(userId);
   const tweets = await Tweet.find({ author: userId });
   const tweetAuthor = await Tweet.findOne({ author: userId }).populate("author");
-
-  console.log(tweets);
-  console.log(tweets[1].content);
   res.render("pages/profile", { user, tweets, tweetAuthor });
 }
 
