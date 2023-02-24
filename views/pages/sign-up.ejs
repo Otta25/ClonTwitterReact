@@ -17,7 +17,7 @@
           <div class="container">
             <h1 class="mb-2 fw-semibold fs-2">Sign Up</h1>
             <p>Create and account and start using Twitter</p>
-            <form action="" method="get" class="sign-up-form">
+            <form action="/sign-up" enctype="multipart/form-data" method="post" class="sign-up-form">
               <input 
               name="firstname"
               type="text"
@@ -53,6 +53,12 @@
               type="file" 
               class="form-control" 
               required />
+              
+              <input 
+              name="file2" 
+              type="file" 
+              class="form-control" 
+              required />
 
               <input 
               name="password"
@@ -62,6 +68,7 @@
               required />
 
               <button type="submit" class="btn btn-twitter">Sign Up</button>
+              <span>Already have an account? <a href="/login">Sign in</a></span>
             </form>
           </div>
         </div>

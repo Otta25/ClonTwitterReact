@@ -22,17 +22,20 @@
         <div class="col-5 border px-0">
           <div class="container px-0" id="main-cont">
             <div class="bg-primary" id="blue-div">
+               <img id="portada" src="<%=user.photoPortada%>" alt="">
               <div class="white-div" id="white-div">
                 <img
                   id="photo-profile"
                   class="me-3"
-                  src="/../img/avatarSmall.svg"
+                  src="/../img/<%=user.photoProfile%>"
                   alt=""
                   srcset=""
                 />
+                <% console.log(user) %>
                 <div>
                   <h5 id="username"><%=user.firstname%></h5>
                   <p class="grey-letter">@<%=user.username %></p>
+                  <p><%=user.bio %></p>
                 </div>
               </div>
               <button class="btn btn-skyblue" id="follow-btn">
