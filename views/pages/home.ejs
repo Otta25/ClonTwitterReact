@@ -5,16 +5,49 @@
   </head>
 
   <body>
-    <div class="container">
-      <h1 class="my-4">Página de inicio</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+    <div class="container- fluid">
+      <div class="row mt-3">
+        <div class="col-1"></div>
+        <div class="col-2"><%- include("../partials/navbarSide") %></div>
+        
+
+<div class="col-6">
+  
+  <%- include("../partials/write") %>
+<!-- -->
+<% for (let i=0;i<tweets.length;i++){ %>
+
+<div class="border p-3" style="display: flex;">
+<div id="photo-tweet">
+  <img
+                  id=""
+                  class="me-3"
+                  src="/../img/avatarSmall.svg"
+                  alt=""
+                  srcset=""
+                />
+   
+</div>
+<div>
+  <h3 class="inline-b fs-5 fw-bold"><span><%=tweets[i].author.firstname  %></span><span> <%=tweets[i].author.lastname  %></span> </h3>
+  <p class="inline-b grey-letter"> @<%=tweets[i].author.username  %></p>
+  <p ><%=tweets[i].content  %></p>
+  <a href=""><img src="/img/heart.svg" alt="" srcset="" /></a> 
+  <p class="ms-1 inline-b like-color m-0 me-auto"><%=tweets[i].likes  %></p>
+</div>
+
+<!--  -->
+</div>
+<% } %>
+</div>
+
+<div class="col-3">
+  <%- include("../partials/happening") %> <br><%- include("../partials/toFollow") %>
+</div>
+
     </div>
-    <%- include("../partials/write") %>
+      
+    </div>
+    
   </body>
 </html>
