@@ -32,6 +32,7 @@ module.exports = async () => {
       email: faker.internet.email(),
       bio: faker.lorem.paragraph(),
       photoProfile: faker.image.avatar(),
+      password: 1234,
     });
     users.push(user);
   }
