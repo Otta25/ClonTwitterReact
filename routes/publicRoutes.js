@@ -7,7 +7,7 @@ const isAuthenticated = require("../middlewares/ensureAuthenticated");
 const User = require("../models/User");
 const passport = require("passport");
 
-router.get("/", pagesController.showHome);
+router.get("/", isAuthenticated, pagesController.showHome);
 
 router.get("/login", pagesController.login);
 

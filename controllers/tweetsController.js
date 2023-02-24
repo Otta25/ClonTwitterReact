@@ -20,7 +20,12 @@ async function create(req, res) {}
 async function store(req, res) {
   const user = await User.findOne();
 
-  await Tweet.create({ content: req.body.content, date: new Date(), likes: 0, author: user._id });
+  await Tweet.create({
+    content: req.body.content,
+    date: new Date(),
+    likes: 0,
+    author: req.user._id,
+  });
   console.log(req.body);
 
   res.redirect("/");
