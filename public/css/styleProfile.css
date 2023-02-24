@@ -112,6 +112,12 @@ a {
   width: 100%;
 }
 
+#portada {
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
+}
+
 #tweet-image {
   width: 70px;
   height: 70px;

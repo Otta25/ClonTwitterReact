@@ -31,6 +31,7 @@ async function store(req, res) {
       email: fields.email,
       username: fields.username,
       photoProfile: files.file.newFilename,
+      photoPortada: files.photoPortada.newFilename,
       password: fields.password,
     });
     await user.save();
