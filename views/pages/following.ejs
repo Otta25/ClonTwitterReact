@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include("../partials/meta") %>
+  </head>
+
+  <body>
+    <div class="container- fluid">
+      <div class="row mt-3">
+        <div class="col-1"></div>
+        <div class="col-2"><%- include("../partials/navbarSide") %></div>
+
+        <div class="col-6">
+          <div class="d-flex align-items-center">
+            <div class="me-3">
+              <a href="/#">
+                <svg
+                  width="17"
+                  height="14"
+                  viewBox="0 0 17 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.29279 0.292592L0.292786 6.29259C0.105315 6.48012 -3.17033e-07 6.73443 -3.05443e-07 6.99959C-2.93852e-07 7.26476 0.105315 7.51906 0.292786 7.70659L6.29279 13.7066C6.48139 13.8888 6.73399 13.9895 6.99619 13.9873C7.25838 13.985 7.5092 13.8798 7.6946 13.6944C7.88001 13.509 7.98518 13.2582 7.98746 12.996C7.98974 12.7338 7.88894 12.4812 7.70679 12.2926L3.41379 7.99959L15.9998 7.99959C16.265 7.99959 16.5194 7.89423 16.7069 7.7067C16.8944 7.51916 16.9998 7.26481 16.9998 6.99959C16.9998 6.73438 16.8944 6.48002 16.7069 6.29249C16.5194 6.10495 16.265 5.99959 15.9998 5.99959L3.41379 5.99959L7.70679 1.70659C7.80009 1.61401 7.87415 1.50387 7.92468 1.38253C7.97522 1.26118 8.00124 1.13104 8.00124 0.999592C8.00124 0.868147 7.97522 0.738002 7.92468 0.61666C7.87415 0.495317 7.80009 0.385177 7.70679 0.292592C7.51926 0.10512 7.26495 -0.000193913 6.99979 -0.000193902C6.73462 -0.00019389 6.48031 0.10512 6.29279 0.292592Z"
+                    fill="black"
+                  /></svg
+              ></a>
+            </div>
+            <div>
+              <h2 class="mb-0">Nombre usuario</h2>
+              <p>@username</p>
+            </div>
+          </div>
+          <div class="container text-center">
+            <div class="row mb-3">
+              <div class="col fw-semibold fs-5">
+                <a href="/usarios/Followers/loogeduser" class="inline-b" style="color: black"
+                  >Followers</a
+                >
+              </div>
+              <div class="col fw-semibold fs-5">
+                <a
+                  href="/usarios/following/loogeduser"
+                  class="inline-b border-tweet"
+                  style="color: black"
+                  >Following</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <%- include("../partials/follow") %>
+        </div>
+
+        <div class="col-3">
+          <%- include("../partials/happening") %> <br /><%- include("../partials/toFollow") %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

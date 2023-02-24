@@ -10,5 +10,7 @@ router.get("/:username", isAuthenticated, userController.show);
 // router.get("/editar/:id", userController.edit);
 // router.patch("/:id", userController.update);
 // router.delete("/:id", userController.destroy);
+router.get("/followers/:id", userController.followers);
+router.get("/following/:id", userController.following);
 
 module.exports = router;
