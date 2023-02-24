@@ -3,10 +3,8 @@ const User = require("../models/User");
 const Tweet = require("../models/Tweet");
 
 async function showHome(req, res) {
-  const tweets = await Tweet.find().populate("author");
+  const tweets = await Tweet.find().populate("author").sort({ date: -1 });
   const tweetsLength = Math.min(20, tweets.length);
-
-  console.log(tweetsLength);
   res.render("pages/home", { tweets, tweetsLength });
 }
 
@@ -43,6 +41,7 @@ async function store(req, res) {
       photoPortada: files.file2.newFilename,
       password: fields.password,
     });
+
     await user.save();
   });
   console.log("fields");
