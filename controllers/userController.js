@@ -31,6 +31,13 @@ async function update(req, res) {}
 // Remove the specified resource from storage.
 async function destroy(req, res) {}
 
+async function followers(req, res) {
+  res.render("pages/followers");
+}
+
+async function following(req, res) {
+  res.render("pages/following");
+}
 // Otros handlers...
 // ...
 
@@ -42,4 +49,6 @@ module.exports = {
   edit,
   update,
   destroy,
+  followers,
+  following,
 };
