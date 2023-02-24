@@ -40,8 +40,10 @@ async function update(req, res) {}
 
 async function destroy(req, res) {
   const tweetId = req.params.id;
-  const tweet = await Tweet.findByIdAndDelete(tweetId);
-  res.json(`Se borro correctamente el tweet ${tweetId}`);
+  await Tweet.findByIdAndDelete(tweetId);
+  const user = await User.find({ _id: tweetId });
+
+  res.redirect(`/usuarios/${req.user.username}`);
 }
 
 // Otros handlers...
