@@ -34,17 +34,62 @@ async function destroy(req, res) {}
 
 async function followers(req, res) {
   const follows = await User.find({ _id: req.user.followers });
-
-  res.render("pages/followers", { follows, req });
+  const userLogged = await User.findById(req.user._id);
+  const tweetAuthor = await Tweet.findOne({ author: user }).populate("author");
+  res.render("pages/followers", { follows, req, userLogged });
 }
 
 async function following(req, res) {
   const follows = await User.find({ _id: req.user.following });
-
-  res.render("pages/following", { follows, req });
+  const userLogged = await User.findById(req.user._id);
+  res.render("pages/following", { follows, req, userLogged });
 }
 // Otros handlers...
 // ...
+
+const followUser = async (req, res) => {
+  const { userId } = req.body;
+  const followerId = req.user._id;
+
+  try {
+    const user = await User.findByIdAndUpdate(userId, { $addToSet: { followers: followerId } });
+    await User.findByIdAndUpdate(followerId, { $addToSet: { following: userId } });
+
+    res.json({
+      success: true,
+      message: "Usuario seguido exitosamente",
+      user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Error al seguir al usuario",
+      error: error.message,
+    });
+  }
+};
+
+const unfollowUser = async (req, res) => {
+  const { userId } = req.body;
+  const followerId = req.user._id;
+
+  try {
+    const user = await User.findByIdAndUpdate(userId, { $pull: { followers: followerId } });
+    await User.findByIdAndUpdate(followerId, { $pull: { following: userId } });
+
+    res.json({
+      success: true,
+      message: "Usuario dejado de seguir exitosamente",
+      user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Error al dejar de seguir al usuario",
+      error: error.message,
+    });
+  }
+};
 
 module.exports = {
   index,
@@ -56,4 +101,6 @@ module.exports = {
   destroy,
   followers,
   following,
+  unfollowUser,
+  followUser,
 };

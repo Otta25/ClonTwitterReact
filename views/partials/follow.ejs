@@ -7,7 +7,14 @@
                   <p class="mb-0 fw-bold"><%=follow.firstname%> <%=follow.lastname%></p>
                   <p class="mb-0 font-grey">@<%=follow.email%></p>
                 </div>
-                <a href="#" class="btn ms-auto me-1 rounded-pill btn-skyblue">Follow</a>
+                <form id="follow-form" action="/usuarios/followers/:id/follow" method="POST">
+                  <input type="hidden" name="userId" value="<%= follow._id %>">
+                  <button type="submit" class="btn ms-auto me-1 rounded-pill btn-skyblue">Seguir</button>
+                </form>
+                <form id="follow-form" action="/usuarios/followers/:id/unfollow" method="POST">
+                  <input type="hidden" name="userId" value="<%= follow._id %>">
+                  <button type="submit" class="btn ms-auto me-1 rounded-pill btn-skyblue">Deseguir</button>
+                </form>
             </div>
         </div>     
     </div>      

@@ -13,4 +13,10 @@ router.get("/:username", isAuthenticated, userController.show);
 router.get("/followers/:id", userController.followers);
 router.get("/following/:id", userController.following);
 
+// Ruta para seguir a un usuario
+router.post("/followers/:id/follow", isAuthenticated, userController.followUser);
+// Ruta para dejar de seguir a un usuario
+router.post("/followers/:id/unfollow", isAuthenticated, userController.unfollowUser);
+router.post("/following/:id/unfollow", isAuthenticated, userController.unfollowUser);
+
 module.exports = router;
