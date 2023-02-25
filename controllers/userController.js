@@ -11,8 +11,9 @@ async function index(req, res) {
 async function show(req, res) {
   const username = req.params.username;
   const user = await User.findOne({ username: username });
-  const tweets = await Tweet.find({ author: user });
+  const tweets = await Tweet.find({ author: user }).sort({ date: -1 });
   const tweetAuthor = await Tweet.findOne({ author: user }).populate("author");
+  console.log(tweets.length);
   res.render("pages/profile", { user, tweets, tweetAuthor, req });
 }
 
