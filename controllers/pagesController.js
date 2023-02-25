@@ -1,6 +1,7 @@
 const formidable = require("formidable");
 const User = require("../models/User");
 const Tweet = require("../models/Tweet");
+const bcrypt = require("bcryptjs");
 
 async function showHome(req, res) {
   const follows = req.user.following;

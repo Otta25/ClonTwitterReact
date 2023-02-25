@@ -35,7 +35,7 @@ async function destroy(req, res) {}
 async function followers(req, res) {
   const follows = await User.find({ _id: req.user.followers });
   const userLogged = await User.findById(req.user._id);
-  const tweetAuthor = await Tweet.findOne({ author: user }).populate("author");
+
   res.render("pages/followers", { follows, req, userLogged });
 }
 
