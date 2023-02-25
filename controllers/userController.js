@@ -13,7 +13,7 @@ async function show(req, res) {
   const user = await User.findOne({ username: username });
   const tweets = await Tweet.find({ author: user }).sort({ date: -1 });
   const tweetAuthor = await Tweet.findOne({ author: user }).populate("author");
-  console.log(tweets.length);
+
   res.render("pages/profile", { user, tweets, tweetAuthor, req });
 }
 
@@ -33,11 +33,15 @@ async function update(req, res) {}
 async function destroy(req, res) {}
 
 async function followers(req, res) {
-  res.render("pages/followers");
+  const follows = await User.find({ _id: req.user.followers });
+
+  res.render("pages/followers", { follows, req });
 }
 
 async function following(req, res) {
-  res.render("pages/following");
+  const follows = await User.find({ _id: req.user.following });
+
+  res.render("pages/following", { follows, req });
 }
 // Otros handlers...
 // ...

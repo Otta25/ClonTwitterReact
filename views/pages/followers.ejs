@@ -13,7 +13,7 @@
         <div class="col-6">
           <div class="d-flex align-items-center">
             <div class="me-3">
-              <a href="/#">
+              <a href="/usuarios/<%=req.user.username %>">
                 <svg
                   width="17"
                   height="14"
@@ -28,29 +28,31 @@
               ></a>
             </div>
             <div>
-              <h2 class="mb-0">Nombre usuario</h2>
-              <p>@username</p>
+              <h2 class="mb-0"><%=req.user.firstname%> <%=req.user.lastname%> </h2>
+              <p>@<%=req.user.email  %></p>
             </div>
           </div>
           <div class="container text-center">
             <div class="row mb-3">
               <div class="col fw-semibold fs-5">
                 <a
-                  href="/usarios/Followers/loogeduser"
+                  href="/usuarios/followers/<%= req.user.username %>"
                   class="inline-b border-tweet"
                   style="color: black"
                   >Followers</a
                 >
               </div>
               <div class="col fw-semibold fs-5">
-                <a href="/usarios/following/loogeduser" class="inline-b" style="color: black"
+                <a href="/usuarios/following/<%= req.user.username %>" class="inline-b" style="color: black"
                   >Following</a
                 >
               </div>
             </div>
           </div>
 
-          <%- include("../partials/follow") %>
+          <% for(let follow of follows){ %>
+          <%- include("../partials/follow",{follow}) %>
+      <% } %>
         </div>
 
         <div class="col-3">
