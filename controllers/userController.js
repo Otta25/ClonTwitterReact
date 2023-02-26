@@ -9,7 +9,7 @@ async function index(req, res) {
 
 // Display the specified resource.
 async function show(req, res) {
-  const username = req.params.username;
+  const username = req.params.id;
   const user = await User.findOne({ username: username });
   const tweets = await Tweet.find({ author: user }).sort({ date: -1 });
   const tweetAuthor = await Tweet.findOne({ author: user }).populate("author");
@@ -35,8 +35,9 @@ async function destroy(req, res) {}
 async function followers(req, res) {
   const follows = await User.find({ _id: req.user.followers });
   const userLogged = await User.findById(req.user._id);
+  const user = await User.find(req.user);
 
-  res.render("pages/followers", { follows, req, userLogged });
+  res.render("pages/followers", { follows, req, userLogged, user });
 }
 
 async function following(req, res) {
@@ -50,16 +51,17 @@ async function following(req, res) {
 const followUser = async (req, res) => {
   const { userId } = req.body;
   const followerId = req.user._id;
+  const userName = req.user.username;
+  const rute = req.url;
+  console.log(rute);
 
   try {
     const user = await User.findByIdAndUpdate(userId, { $addToSet: { followers: followerId } });
     await User.findByIdAndUpdate(followerId, { $addToSet: { following: userId } });
 
-    res.json({
-      success: true,
-      message: "Usuario seguido exitosamente",
-      user,
-    });
+    if (rute === `/followers/follow`) {
+      return res.redirect(`/usuarios/followers/${userName}`);
+    } else return res.redirect(`/usuarios/following/${userName}`);
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -72,16 +74,17 @@ const followUser = async (req, res) => {
 const unfollowUser = async (req, res) => {
   const { userId } = req.body;
   const followerId = req.user._id;
+  const userName = req.user.username;
+  const rute = req.url;
+  console.log(rute);
 
   try {
     const user = await User.findByIdAndUpdate(userId, { $pull: { followers: followerId } });
     await User.findByIdAndUpdate(followerId, { $pull: { following: userId } });
 
-    res.json({
-      success: true,
-      message: "Usuario dejado de seguir exitosamente",
-      user,
-    });
+    if (rute === `/followers/unfollow`) {
+      return res.redirect(`/usuarios/followers/${userName}`);
+    } else return res.redirect(`/usuarios/following/${userName}`);
   } catch (error) {
     res.status(500).json({
       success: false,

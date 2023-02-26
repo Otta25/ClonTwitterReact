@@ -24,7 +24,7 @@ module.exports = async () => {
    * Escribir código del seeder aquí...
    */
   const users = [];
-  const totalUsers = 10;
+  const totalUsers = 20;
 
   for (let i = 0; i < totalUsers; i++) {
     let password = await bcrypt.hash("1234", 8);
