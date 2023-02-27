@@ -4,9 +4,9 @@ const Tweet = require("../models/Tweet");
 const bcrypt = require("bcryptjs");
 
 async function showHome(req, res) {
+  const users = await User.find();
   const follows = req.user.following;
   follows.push(req.user._id);
-
   const tweets = await Tweet.find({
     author: follows,
   })
@@ -14,7 +14,7 @@ async function showHome(req, res) {
     .sort({ date: -1 });
   const tweetsLength = Math.min(20, tweets.length);
 
-  res.render("pages/home", { tweets, tweetsLength, req });
+  res.render("pages/home", { tweets, tweetsLength, req, users });
 }
 
 async function login(req, res) {
