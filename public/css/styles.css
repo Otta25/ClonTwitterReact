@@ -16,11 +16,26 @@ button {
 /* Navbar */
 
 #main-navbar {
-  height: 100vh;
+  height: 93vh;
   position: fixed;
   display: flex;
-  background-color: white;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
 }
+
+
+#logout-btn {
+  background-color: #f0241d;
+  width: 12vw;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2rem;
+
+}
+
 
 #main-home-container{
   width: 39%;
@@ -83,6 +98,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 1rem;
 }
 
 #tweet-btn img {
