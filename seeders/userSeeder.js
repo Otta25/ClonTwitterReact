@@ -50,8 +50,8 @@ module.exports = async () => {
     username: "Gladys.Manya",
     email: "gladys@admin",
     bio: "Abuela. Manya. Diosa.",
-    photoProfile: "2fc67ba844840bcd35d358b00.jpeg",
-    photoPortada: "portada.jpg",
+    photoProfile: "/img/2fc67ba844840bcd35d358b00.jpeg",
+    photoPortada: "/img/13fb7da226209821a8783fc01.jpg",
     password: await bcrypt.hash("1234", 8),
     following: users,
   });

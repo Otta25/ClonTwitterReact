@@ -12,7 +12,7 @@ async function showHome(req, res) {
   })
     .populate("author")
     .sort({ date: -1 });
-    console.log(tweets)
+  console.log(tweets);
   const tweetsLength = Math.min(20, tweets.length);
 
   res.render("pages/home", { tweets, tweetsLength, req, users });
@@ -44,8 +44,8 @@ async function store(req, res) {
       lastname: fields.lastname,
       email: fields.email,
       username: fields.username,
-      photoProfile: files.file.newFilename,
-      photoPortada: files.file2.newFilename,
+      photoProfile: "/img/" + files.file.newFilename,
+      photoPortada: "/img/" + files.file2.newFilename,
       password: password,
     });
 
