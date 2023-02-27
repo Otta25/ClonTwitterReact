@@ -20,7 +20,26 @@ async function create(req, res) {}
 // Store a newly created resource in storage.
 async function store(req, res) {
   const user = await User.findOne();
+  /////////
+  const day = new Date();
+  const m = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const str_op = day.getDate() + " " + m[day.getMonth()] + " " + day.getFullYear();
+  console.log(str_op);
 
+  /////////
   await Tweet.create({
     content: req.body.content,
     date: new Date(),
