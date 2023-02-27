@@ -36,8 +36,8 @@ module.exports = async () => {
       username: faker.internet.userName(firstname, lastname),
       email: faker.internet.email(firstname, lastname, "hack.dev"),
       bio: faker.lorem.sentences(1),
-      photoProfile: "2fc67ba844840bcd35d358b00.jpeg",
-      photoPortada: "portada.jpg",
+      photoProfile: faker.image.avatar(),
+      photoPortada: faker.image.abstract(879, 338),
       password: password,
       following: users.sort(() => 0.5 - Math.random()).slice(0, 5),
     });
