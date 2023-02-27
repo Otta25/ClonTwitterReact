@@ -24,7 +24,6 @@ async function store(req, res) {
   await Tweet.create({
     content: req.body.content,
     date: new Date(),
-    likes: 0,
     author: req.user._id,
   });
 
@@ -54,11 +53,11 @@ async function Addlike(req, res) {
     let index = newLike.likes.indexOf(req.user._id);
     newLike.likes.splice(index, 1);
     await newLike.save();
-    res.redirect('back');
+    res.redirect("back");
   } else {
     newLike.likes.push(req.user._id);
     await newLike.save();
-    res.redirect('back');
+    res.redirect("back");
   }
 }
 
