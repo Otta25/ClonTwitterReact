@@ -222,7 +222,7 @@ button {
   margin-left: 1rem;
 }
 
-#unfollow-btn {
+#unfollow-btn-class {
   background-color: white;
   border: solid 2px rgba(128, 128, 128, 0.392);
   color: rgba(128, 128, 128, 0.791);
@@ -233,4 +233,12 @@ button {
   right: 1rem;
 }
 
+.unfollow-btn {
+  background-color: white;
+  border: solid 2px rgba(128, 128, 128, 0.392);
+  color: rgba(128, 128, 128, 0.791);
+  
+  
+  
+}
 
