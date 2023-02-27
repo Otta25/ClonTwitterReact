@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const Tweet = require("../models/Tweet");
+const formatDistanceToNow = require("date-fns/formatDistanceToNow");
 
 // Display a listing of the resource.
 async function index(req, res) {
@@ -15,7 +16,7 @@ async function show(req, res) {
   const tweets = await Tweet.find({ author: user }).sort({ date: -1 });
   const tweetAuthor = await Tweet.findOne({ author: user }).populate("author");
 
-  res.render("pages/profile", { user, tweets, tweetAuthor, req, users });
+  res.render("pages/profile", { user, tweets, tweetAuthor, req, users, formatDistanceToNow });
 }
 
 // Show the form for creating a new resource

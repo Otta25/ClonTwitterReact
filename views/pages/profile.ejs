@@ -34,12 +34,12 @@
                                     <% if (!userFollowedByLoggedUser) { %>
                                       <form id="follow-form" action="/usuarios/followers/follow" method="POST">
                                         <input type="hidden" name="userId" value="<%= user._id %>">
-                                        <button type="submit" class="btn ms-auto me-1 rounded-pill btn-skyblue">Follow</button>
+                                        <button type="submit" id="follow-btn" class="btn ms-auto me-1 rounded-pill btn-skyblue">Follow</button>
                                       </form>
                                     <% } else { %>
                                       <form id="follow-form" action="/usuarios/followers/unfollow" method="POST">
                                         <input type="hidden" name="userId" value="<%= user._id %>">
-                                        <button type="submit" class="btn ms-auto me-1 rounded-pill btn-skyblue">Unfollow</button>
+                                        <button type="submit" id="unfollow-btn"  class="btn ms-auto me-1 rounded-pill btn-gray">Unfollow</button>
                                       </form>
                                     <% } %>
                                   <% } %>
@@ -57,7 +57,7 @@
           <div id="tweet-container">
             <h3>Tweets</h3>
             <% for (const tweet of tweets) { %>     
-               <%- include("../partials/tweet", {tweet}) %> 
+               <%- include("../partials/tweet", {tweet,formatDistanceToNow}) %> 
                <% } %>
           </div>
         </div>

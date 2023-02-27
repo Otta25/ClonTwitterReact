@@ -1,7 +1,7 @@
 const { faker } = require("@faker-js/faker");
 const Tweet = require("../models/Tweet");
 const User = require("../models/User");
-
+const { format, formatDistance, formatRelative, subDays } = require("date-fns");
 // Configurar el idioma de Faker
 faker.locale = "es";
 

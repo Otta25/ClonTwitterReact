@@ -10,6 +10,8 @@
         <div class="col">
           <h5 class="inline-b fw-semibold mb-1"><%=tweetAuthor.author.firstname%> <%=tweetAuthor.author.lastname%></h5>
           <p class="inline-b font-grey mb-1">@<%= tweetAuthor.author.username%></p>
+          <span>•</span>
+          <p class="inline-b font-grey mb-1"><%= formatDistanceToNow(tweet.date)%></p>
           <p class="card-text"><%=tweet.content%></p>
           <div class="d-flex justify-content-between">
             <div id="interact-icon">
@@ -33,7 +35,9 @@
                 </li>
               </ul>
             </div>
+            <% if (tweetAuthor.author.username === req.user.username) { %>
             <a class="me-2" href="/tweets/borrar/<%=tweet._id %>"><img src="/img/delete.svg" alt="" srcset="" /></a>
+            <% } %>
           </div>
         </div>
       </div>
