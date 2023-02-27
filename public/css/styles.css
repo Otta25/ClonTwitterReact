@@ -222,3 +222,15 @@ button {
 #tweet-home {
   margin-left: 1rem;
 }
+
+
+#unfollow-btn {
+  background-color: white;
+  border: solid 2px rgba(128, 128, 128, 0.392);
+  color: rgba(128, 128, 128, 0.791) ;
+  width: 90px;
+  margin-top: 30px;
+  position: absolute;
+  bottom: -3rem;
+  right: 1rem;
+}
