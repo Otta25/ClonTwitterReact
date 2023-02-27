@@ -21,7 +21,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: start;
+  align-items: center;
 }
 
 #logout-btn {
@@ -31,7 +31,6 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 2rem;
 }
 
 #main-home-container {
@@ -67,7 +66,6 @@ button {
 
 #main-navbar svg {
   width: 1.5rem;
-  margin-right: 2rem;
 }
 
 #main-navbar li span {
@@ -76,10 +74,7 @@ button {
   font-weight: 400;
   align-items: center;
   justify-content: center;
-}
-
-#main-navbar li img {
-  margin-right: 2rem;
+  margin-left: 2rem;
 }
 
 #main-navbar li:hover {
@@ -114,6 +109,7 @@ button {
     position: fixed;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
   #nav-icons {
@@ -122,10 +118,11 @@ button {
 
   #main-navbar li {
     list-style: none;
-    width: 3rem;
+    width: 6rem;
     height: 3rem;
     border-radius: 50%;
     margin: 1rem;
+
     display: flex;
     align-items: center;
     justify-content: center;

@@ -7,9 +7,8 @@
   <body>
     <div class="container-fluid">
       <div class="row mt-4">
-        <div class="d-none d-md-block col-md-1 col-lg-2"></div>
-        <div class="col-2"><%- include("../partials/navbarSide") %></div>
-        
+        <div class="d-none d-xl-block col-lg-1"></div>
+        <div class="col-2 col-lg-3 border-end"><%- include("../partials/navbarSide") %></div>
 
 <div id="main-home-container" class="col-9 col-lg-4">
   <% const tweet = tweets %>
@@ -17,11 +16,11 @@
 <!-- -->
 <% for (let i=0;i<tweetsLength;i++){ %>
 
-<div  class="border p-3" style="display: flex;">
+<div  class="p-3 border-bottom" style="display: flex;">
 <div id="">
   <a href="/usuarios/<%=tweets[i].author.username%>"><img
     id=""
-    class="me-3 tiny-pic-profile"
+    class="me-sm-3 tiny-pic-profile"
     src="<%=tweets[i].author.photoProfile%>"
     alt=""
     srcset=""
@@ -69,7 +68,7 @@
 <% } %>
 </div>
 
-<div class="d-none d-lg-block col-lg-2">
+<div class="d-none d-lg-block col-lg-2 border-start">
   <%- include("../partials/happening") %> <br><%- include("../partials/toFollow") %>
 </div>
 <div class="d-none d-xl-block col-2"></div>
