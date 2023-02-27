@@ -19,7 +19,11 @@
                 <li id="like-icon">
                   <form method="post" action="/tweets/<%=tweet._id%>/addLike">
                     <button type="submit" id="like-anchor">
-                      <img src="/img/heart.svg" alt="" srcset="" />
+                      <% if(tweet.likes.includes(req.user._id)){ %>
+                        <img id="like" src="/img/heart.svg" alt="" srcset="" />
+                        <% } else { %>
+                        <img id="dislike" src="/img/dislike.svg" alt="" srcset="" />
+                      <% } %>
                     </button>
                   </form>
                   <span><%=tweet.likes.length%></span>
