@@ -18,7 +18,7 @@ module.exports = async () => {
     const tweet = new Tweet({
       content: faker.lorem.sentence(5),
       date: new Date(),
-      likes: ["Beto"],
+      likes: [],
       // Asignar un autor aleatorio de la lista de usuarios
       author: users[Math.floor(Math.random() * users.length)],
     });
