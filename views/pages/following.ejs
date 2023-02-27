@@ -14,7 +14,7 @@
         
         <div class="d-flex align-items-center">
             <div class="me-3">
-              <a href="/usuarios/<%=req.user.username %>">
+              <a href="/usuarios/<%=usernameProfile[0].username %>">
                 <svg
                   width="17"
                   height="14"
@@ -31,20 +31,20 @@
        
        
             <div >
-              <h2 class="mb-0"><%=req.user.firstname%> <%=req.user.lastname%></h2>
-              <p>@<%=req.user.email  %></p>
+              <h2 class="mb-0"><%=usernameProfile[0].firstname%> <%=usernameProfile[0].lastname%></h2>
+              <p>@<%=usernameProfile[0].email%></p>
             </div>
           </div>
           <div class="container text-center">
             <div class="row mb-3">
               <div class="col fw-semibold fs-5">
-                <a href="/usuarios/followers/<%= req.user.username %>" class="inline-b" style="color: black"
+                <a href="/usuarios/followers/<%= usernameProfile[0].username %>" class="inline-b" style="color: black"
                   >Followers</a
                 >
               </div>
               <div class="col fw-semibold fs-5">
                 <a
-                  href="/usuarios/following/<%= req.user.username %>"
+                  href="/usuarios/following/<%= usernameProfile[0].username %>"
                   class="inline-b border-tweet"
                   style="color: black"
                   >Following</a
