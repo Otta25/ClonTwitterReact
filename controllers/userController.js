@@ -37,18 +37,20 @@ async function followers(req, res) {
   const usernameProfile = await User.find({ username: req.params.id });
   const followsProfile = usernameProfile[0].followers;
   const follows = await User.find({ _id: followsProfile });
-  const userLogged = await User.findById(req.user._id);
   const user = await User.find(req.user);
+  const users = await User.find();
 
-  res.render("pages/followers", { follows, req, user, usernameProfile, userLogged });
+  res.render("pages/followers", { follows, req, user, usernameProfile, users });
 }
 
 async function following(req, res) {
   const usernameProfile = await User.find({ username: req.params.id });
   const followsProfile = usernameProfile[0].following;
   const follows = await User.find({ _id: followsProfile });
+  const user = await User.find(req.user);
+  const users = await User.find();
 
-  res.render("pages/following", { follows, req, usernameProfile });
+  res.render("pages/following", { follows, req, usernameProfile, users, user });
 }
 // Otros handlers...
 // ...
@@ -57,16 +59,11 @@ const followUser = async (req, res) => {
   const { userId } = req.body;
   const followerId = req.user._id;
   const userName = req.user.username;
-  const rute = req.url;
-  console.log(rute);
 
   try {
     const user = await User.findByIdAndUpdate(userId, { $addToSet: { followers: followerId } });
     await User.findByIdAndUpdate(followerId, { $addToSet: { following: userId } });
-
-    if (rute === `/followers/follow`) {
-      return res.redirect(`/usuarios/followers/${userName}`);
-    } else return res.redirect(`/usuarios/following/${userName}`);
+    return res.redirect("back");
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -80,16 +77,11 @@ const unfollowUser = async (req, res) => {
   const { userId } = req.body;
   const followerId = req.user._id;
   const userName = req.user.username;
-  const rute = req.url;
-  console.log(rute);
 
   try {
     const user = await User.findByIdAndUpdate(userId, { $pull: { followers: followerId } });
     await User.findByIdAndUpdate(followerId, { $pull: { following: userId } });
-
-    if (rute === `/followers/unfollow`) {
-      return res.redirect(`/usuarios/followers/${userName}`);
-    } else return res.redirect(`/usuarios/following/${userName}`);
+    return res.redirect("back");
   } catch (error) {
     res.status(500).json({
       success: false,

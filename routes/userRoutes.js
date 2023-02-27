@@ -15,8 +15,9 @@ router.get("/following/:id", userController.following);
 
 // Ruta para seguir a un usuario
 router.post("/followers/follow", isAuthenticated, userController.followUser);
-// Ruta para dejar de seguir a un usuario
 router.post("/followers/unfollow", isAuthenticated, userController.unfollowUser);
+
 router.post("/following/unfollow", isAuthenticated, userController.unfollowUser);
+router.post("/following/follow", isAuthenticated, userController.followUser);
 
 module.exports = router;

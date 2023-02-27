@@ -55,15 +55,45 @@
               
             </div>
           </div>
-          <% for(let follow of follows){ %>
-            <%- include("../partials/follow",{follow}) %>
+          
+            <% for(let follow of follows){ %>
+              <!-- es true si lo sigo -->
+             <% const userFollowedByLoggedUser = req.user.following.includes(follow.id);%> 
+              <div class="p-2 w-100">
+                <div class="my-3">
+                    <div class="col">
+                       <div class="d-flex align-items-center ms-1">
+                         <img class="me-3 p-1" src="/img/avatarSmall.svg" alt="" srcset="" />
+                            <div>
+                              <p class="mb-0 fw-bold"><%=follow.firstname%> <%=follow.lastname%></p>
+                              <p class="mb-0 font-grey">@<%=follow.email%></p>
+                            </div>
+                            <div class="ms-auto me-2">
+                              <% if (req.user.id !== user.id) { %>
+                                <% if (!userFollowedByLoggedUser) { %>
+                                  <form id="follow-form" action="/usuarios/following/follow" method="POST">
+                                    <input type="hidden" name="userId" value="<%= follow._id %>">
+                                    <button type="submit" class="btn ms-auto me-1 rounded-pill btn-skyblue">Follow</button>
+                                  </form>
+                                <% } else { %>
+                                  <form id="follow-form" action="/usuarios/following/unfollow" method="POST">
+                                    <input type="hidden" name="userId" value="<%= follow._id %>">
+                                    <button type="submit" class="btn ms-auto me-1 rounded-pill btn-skyblue">Unfollow</button>
+                                  </form>
+                                <% } %>
+                              <% } %>
+                            </div>
+                        </div>
+                    </div>     
+                </div>      
+            </div>
+        <% } %>
          
-            <% } %>
-                    
+            
         </div>
 
         <div class="col-3">
-          <%- include("../partials/happening") %> <br /><%- include("../partials/toFollow") %>
+          <%- include("../partials/happening") %> <br><%- include("../partials/toFollow") %>
         </div>
       </div>
     </div>
