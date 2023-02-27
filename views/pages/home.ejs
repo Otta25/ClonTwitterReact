@@ -33,7 +33,7 @@
     <a href="/usuarios/<%=tweets[i].author.username  %>" style="color: black;"> <%=tweets[i].author.lastname  %></a>   </h3>
   <p class="inline-b grey-letter"> @<%=tweets[i].author.username  %></p>
   <span>•</span>
-  <p class="inline-b grey-letter"> <%=formatDistanceToNow(tweets[i].date)  %></p>
+  <p class="inline-b grey-letter"> <%=formatDistanceToNow(tweets[i].date)%> ago</p>
   <p ><%=tweets[i].content  %></p>
   <!-- ////// -->
   <ul id="interaction-list">
@@ -41,7 +41,11 @@
       <li id="like-icon">
         <form method="post" action="/tweets/<%=tweets[i]._id%>/addLike">
           <button type="submit" id="like-anchor">
-            <img src="/img/heart.svg" alt="" srcset="" />
+            <% if(tweets[i].likes.includes(req.user._id)){ %>
+              <img id="like" src="/img/heart.svg" alt="" srcset="" />
+              <% } else { %>
+              <img id="dislike" src="/img/dislike.svg" alt="" srcset="" />
+            <% } %>
           </button>
         </form>
         <span><%=tweets[i].likes.length  %></span>

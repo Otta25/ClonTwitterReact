@@ -27,7 +27,7 @@
                     <p class="grey-letter">@<%=user.username %></p>
                     <p><%=user.bio %></p>
                   </div>
-                                </div>
+                      </div>
                                 <% if (user.username !== req.user.username) { %>
                                   <% const userFollowedByLoggedUser = req.user.following.includes(user._id);%> 
                                   <% if (req.user.id !== user.id) { %>

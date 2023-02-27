@@ -190,7 +190,16 @@ button {
   display: flex;
 }
 
-#like-icon span {
+#like {
+  transition: ease-in-out 0.1s;
+ }
+ 
+#like:active {
+ transform: scale(1.3);
+}
+
+
+#like-icon span{
   margin-left: 1rem;
 }
 
@@ -223,3 +232,5 @@ button {
   bottom: -3rem;
   right: 1rem;
 }
+
+
