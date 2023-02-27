@@ -5,10 +5,10 @@
 <form action="/tweets" method="post">
   <div class="text-center">
     <div class="row">
-      <div class="col-1">
-        <img class="ms-2" src="/img/avatar.svg" alt="" srcset="" />
+      <div class="col-2">
+        <img class="ms-2 tiny-pic-profile" src="<%=req.user.photoProfile%>" alt="" srcset="" />
       </div>
-      <div class="col-11">
+      <div class="col-10">
         <div class="mb-3">
           <textarea
             class="form-control border-0"

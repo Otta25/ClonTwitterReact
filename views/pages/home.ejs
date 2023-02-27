@@ -13,7 +13,7 @@
 
 <div id="main-home-container" class="col-6">
   <% const tweet = tweets %>
-  <%- include("../partials/write") %>
+  <%- include("../partials/write", {req}) %>
 <!-- -->
 <% for (let i=0;i<tweetsLength;i++){ %>
 
