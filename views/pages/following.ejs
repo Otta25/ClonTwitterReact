@@ -6,11 +6,11 @@
 
   <body>
     <div class="container- fluid">
-      <div class="row mt-3">
-        <div class="col-1"></div>
-        <div class="col-2"><%- include("../partials/navbarSide") %></div>
+      <div class="row mt-4">
+        <div class="d-none d-xl-block col-lg-1"></div>
+        <div class="col-2 border-end"><%- include("../partials/navbarSide") %></div>
 
-        <div class="col-6">    
+        <div class="col-9 col-lg-6">    
         
         <div class="d-flex align-items-center">
             <div class="me-3">
@@ -96,9 +96,10 @@
             
         </div>
 
-        <div class="col-3">
+        <div class="d-none d-lg-block col-lg-2 border-start mt-2">
           <%- include("../partials/happening") %> <br><%- include("../partials/toFollow") %>
         </div>
+        <div class="d-none d-xl-block col-2"></div>
       </div>
     </div>
   </body>
