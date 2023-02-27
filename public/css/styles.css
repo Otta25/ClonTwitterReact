@@ -24,7 +24,6 @@ button {
   align-items: start;
 }
 
-
 #logout-btn {
   background-color: #f0241d;
   width: 12vw;
@@ -33,12 +32,9 @@ button {
   align-items: center;
   justify-content: center;
   margin-left: 2rem;
-
 }
 
-
-#main-home-container{
-  width: 39%;
+#main-home-container {
 }
 
 #main-navbar a {
@@ -54,7 +50,6 @@ button {
 
 #main-navbar li {
   list-style: none;
-  width: 10vw;
   height: 3rem;
   margin-top: 0.7rem;
   display: flex;
@@ -194,15 +189,15 @@ button {
   padding-bottom: 10vh;
 }
 
-#like-icon{
+#like-icon {
   display: flex;
 }
 
-#like-icon span{
+#like-icon span {
   margin-left: 1rem;
 }
 
-#comment-icon{
+#comment-icon {
   margin-left: 1rem;
 }
 
@@ -211,14 +206,23 @@ button {
   height: 2.5rem;
 }
 
-
 #photo-tweet img {
   object-fit: contain;
   width: 100%;
   border-radius: 50%;
 }
 
-
 #tweet-home {
   margin-left: 1rem;
+}
+
+#unfollow-btn {
+  background-color: white;
+  border: solid 2px rgba(128, 128, 128, 0.392);
+  color: rgba(128, 128, 128, 0.791);
+  width: 90px;
+  margin-top: 30px;
+  position: absolute;
+  bottom: -3rem;
+  right: 1rem;
 }
