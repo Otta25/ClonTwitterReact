@@ -2,6 +2,7 @@ const formidable = require("formidable");
 const User = require("../models/User");
 const Tweet = require("../models/Tweet");
 const bcrypt = require("bcryptjs");
+const formatDistanceToNow = require("date-fns/formatDistanceToNow");
 
 async function showHome(req, res) {
   const users = await User.find();
@@ -12,10 +13,10 @@ async function showHome(req, res) {
   })
     .populate("author")
     .sort({ date: -1 });
-  console.log(tweets);
+  //console.log(tweets);
   const tweetsLength = Math.min(20, tweets.length);
 
-  res.render("pages/home", { tweets, tweetsLength, req, users });
+  res.render("pages/home", { tweets, tweetsLength, req, users, formatDistanceToNow });
 }
 
 async function login(req, res) {
@@ -31,7 +32,7 @@ async function showAboutUs(req, res) {
 }
 
 async function store(req, res) {
-  console.log(__dirname);
+  //console.log(__dirname);
   const form = formidable({
     multiples: true,
     uploadDir: __dirname + "/../public/img",
@@ -51,7 +52,7 @@ async function store(req, res) {
 
     await user.save();
   });
-  console.log("fields");
+  //console.log("fields");
   return res.redirect("/");
 }
 

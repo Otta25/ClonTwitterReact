@@ -58,9 +58,9 @@
            <% const userFollowedByLoggedUser = req.user.following.includes(follow._id);%> 
             <div class="p-2 w-100">
               <div class="my-3">
-                  <div class="col">
+                  <div class="col h-15">
                      <div class="d-flex align-items-center ms-1">
-                       <img class="me-3 p-1" src="/img/avatarSmall.svg" alt="" srcset="" />
+                       <img style="width: 10%;" class="me-3 p-1 rounded-circle " src="<%=follow.photoProfile%>" alt="" srcset="" />
                           <div>
                             <a href="/usuarios/<%= follow.username %>">
                             <p class="mb-0 fw-bold"><%=follow.firstname%> <%=follow.lastname%></p>

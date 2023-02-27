@@ -33,6 +33,7 @@
     <a href="/usuarios/<%=tweets[i].author.username  %>" style="color: black;"><%=tweets[i].author.firstname  %></a>
     <a href="/usuarios/<%=tweets[i].author.username  %>" style="color: black;"> <%=tweets[i].author.lastname  %></a>   </h3>
   <p class="inline-b grey-letter"> @<%=tweets[i].author.username  %></p>
+  <p class="inline-b grey-letter"> <%=formatDistanceToNow(tweets[i].date)  %></p>
   <p ><%=tweets[i].content  %></p>
   <!-- ////// -->
   <ul id="interaction-list">

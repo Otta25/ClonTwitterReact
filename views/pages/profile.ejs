@@ -57,7 +57,7 @@
           <div id="tweet-container">
             <h3>Tweets</h3>
             <% for (const tweet of tweets) { %>     
-               <%- include("../partials/tweet", {tweet}) %> 
+               <%- include("../partials/tweet", {tweet,formatDistanceToNow}) %> 
                <% } %>
           </div>
         </div>
