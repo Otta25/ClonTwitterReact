@@ -10,7 +10,22 @@
             <a href="/usuarios/<%=user.username%>" class="mb-0 fw-bold text-dark"><%= user.firstname %> <%= user.lastname %></a>
             <p class="mb-0 font-grey">@<%= user.username %></p>
           </div>
-          <a href="#" class="btn ms-auto me-1 rounded-pill btn-skyblue">Follow</a>
+          <div>
+            <% const userFollowedByLoggedUser = req.user.following.includes(user._id);%> 
+              <% if (req.user.id !== user.id) { %>
+                <% if (!userFollowedByLoggedUser) { %>
+                  <form id="follow-form" action="/usuarios/followers/follow" method="POST">
+                    <input type="hidden" name="userId" value="<%= user._id %>">
+                    <button type="submit" class="btn ms-auto me-1 rounded-pill btn-skyblue">Follow</button>
+                  </form>
+                <% } else { %>
+                  <form id="follow-form" action="/usuarios/followers/unfollow" method="POST">
+                    <input type="hidden" name="userId" value="<%= user._id %>">
+                    <button type="submit" class="btn ms-auto me-1 rounded-pill btn-skyblue">Unfollow</button>
+                  </form>
+                <% } %>
+              <% } %>
+          </div>
         </div>
       </li>
     <% } %>
