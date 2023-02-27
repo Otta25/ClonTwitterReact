@@ -34,7 +34,9 @@
                 </li>
               </ul>
             </div>
+            <% if (tweetAuthor.author.username === req.user.username) { %>
             <a class="me-2" href="/tweets/borrar/<%=tweet._id %>"><img src="/img/delete.svg" alt="" srcset="" /></a>
+            <% } %>
           </div>
         </div>
       </div>
