@@ -69,7 +69,7 @@
                               <p class="mb-0 font-grey">@<%=follow.email%></p>
                             </div>
                             <div class="ms-auto me-2">
-                              <% if (req.user.id !== user.id) { %>
+                              <% if (follow.username !== req.user.username) { %>
                                 <% if (!userFollowedByLoggedUser) { %>
                                   <form id="follow-form" action="/usuarios/following/follow" method="POST">
                                     <input type="hidden" name="userId" value="<%= follow._id %>">
