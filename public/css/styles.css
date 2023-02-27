@@ -8,6 +8,11 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+button {
+  border: none;
+  background-color: white;
+}
+
 /* Navbar */
 
 #main-navbar {
@@ -15,6 +20,10 @@ body {
   position: fixed;
   display: flex;
   background-color: white;
+}
+
+#main-home-container{
+  width: 39%;
 }
 
 #main-navbar a {
@@ -167,4 +176,16 @@ body {
 .user-container {
   padding-top: 10vh;
   padding-bottom: 10vh;
+}
+
+#like-icon{
+  display: flex;
+}
+
+#like-icon span{
+  margin-left: 1rem;
+}
+
+#comment-icon{
+  margin-left: 1rem;
 }

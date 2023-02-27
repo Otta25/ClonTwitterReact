@@ -18,4 +18,5 @@ mongoose.connect(process.env.DB_CONNECTION_STRING, {
   useUnifiedTopology: true,
 });
 
+
 module.exports = { mongoose, Schema };
