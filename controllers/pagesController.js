@@ -12,6 +12,7 @@ async function showHome(req, res) {
   })
     .populate("author")
     .sort({ date: -1 });
+    console.log(tweets)
   const tweetsLength = Math.min(20, tweets.length);
 
   res.render("pages/home", { tweets, tweetsLength, req, users });

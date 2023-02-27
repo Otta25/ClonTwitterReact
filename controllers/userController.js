@@ -34,17 +34,21 @@ async function update(req, res) {}
 async function destroy(req, res) {}
 
 async function followers(req, res) {
-  const follows = await User.find({ _id: req.user.followers });
+  const usernameProfile = await User.find({ username: req.params.id });
+  const followsProfile = usernameProfile[0].followers;
+  const follows = await User.find({ _id: followsProfile });
   const userLogged = await User.findById(req.user._id);
   const user = await User.find(req.user);
 
-  res.render("pages/followers", { follows, req, userLogged, user });
+  res.render("pages/followers", { follows, req, user, usernameProfile, userLogged });
 }
 
 async function following(req, res) {
-  const follows = await User.find({ _id: req.user.following });
-  const userLogged = await User.findById(req.user._id);
-  res.render("pages/following", { follows, req, userLogged });
+  const usernameProfile = await User.find({ username: req.params.id });
+  const followsProfile = usernameProfile[0].following;
+  const follows = await User.find({ _id: followsProfile });
+
+  res.render("pages/following", { follows, req, usernameProfile });
 }
 // Otros handlers...
 // ...

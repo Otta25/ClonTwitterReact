@@ -47,17 +47,18 @@ async function destroy(req, res) {
 }
 
 async function Addlike(req, res) {
+  let ruta = req.url;
   let tweet = req.params.id;
   const newLike = await Tweet.findById(tweet);
   if (newLike.likes.includes(req.user._id)) {
     let index = newLike.likes.indexOf(req.user._id);
     newLike.likes.splice(index, 1);
     await newLike.save();
-    res.send("se saco el like ");
+    res.redirect('back');
   } else {
     newLike.likes.push(req.user._id);
     await newLike.save();
-    res.send("se dio like ");
+    res.redirect('back');
   }
 }
 
