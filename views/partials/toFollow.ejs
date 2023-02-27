@@ -4,13 +4,17 @@
     <% for (let i = 0; i < 5; i++) { %>
       <% const user = users[Math.floor(Math.random()*users.length)]; %>
       <li class="pb-2 ps-2">
-        <div class="d-flex align-items-center ms-1">
-          <img class="me-3 p-1 rounded-circle h-25 w-25" src="<%=user.photoProfile%>" alt="" />
-          <div>
-            <a href="/usuarios/<%=user.username%>" class="mb-0 fw-bold text-dark"><%= user.firstname %> <%= user.lastname %></a>
-            <p class="mb-0 font-grey">@<%= user.username %></p>
-          </div>
-          <div>
+        <div class="container">
+          <div class="d-flex align-items-center row">
+            <div class="col-2 pe-5">
+              <img class="tiny-pic-profile" src="<%=user.photoProfile%>" alt="" />
+            </div>
+              <div class="col-5">
+                <a href="/usuarios/<%=user.username%>" class="d-block text-truncate mb-0 fw-bold text-dark"><%= user.firstname %> <%= user.lastname %></a>
+                <p class="mb-0 font-grey fs-6 text-truncate">@<%= user.username %></p>
+              </div>
+            
+          <div class="col-4 ps-1">
             <% const userFollowedByLoggedUser = req.user.following.includes(user._id);%> 
               <% if (req.user.id !== user.id) { %>
                 <% if (!userFollowedByLoggedUser) { %>
@@ -25,6 +29,7 @@
                   </form>
                 <% } %>
               <% } %>
+            </div>
           </div>
         </div>
       </li>
