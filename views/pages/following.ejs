@@ -31,7 +31,9 @@
        
        
             <div >
-              <h2 class="mb-0"><%=usernameProfile[0].firstname%> <%=usernameProfile[0].lastname%></h2>
+              <a href="/usuarios/<%=usernameProfile[0].username%>"> 
+                <h2 class="mb-0"><%=usernameProfile[0].firstname%> <%=usernameProfile[0].lastname%> </h2>
+              </a>
               <p>@<%=usernameProfile[0].email%></p>
             </div>
           </div>
@@ -65,7 +67,9 @@
                        <div class="d-flex align-items-center ms-1">
                          <img class="me-3 p-1" src="/img/avatarSmall.svg" alt="" srcset="" />
                             <div>
+                              <a href="/usuarios/<%= follow.username %>">
                               <p class="mb-0 fw-bold"><%=follow.firstname%> <%=follow.lastname%></p>
+                            </a>
                               <p class="mb-0 font-grey">@<%=follow.email%></p>
                             </div>
                             <div class="ms-auto me-2">
