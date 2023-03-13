@@ -36,17 +36,13 @@ async function store(req, res) {
     "November",
     "December",
   ];
-  const str_op = day.getDate() + " " + m[day.getMonth()] + " " + day.getFullYear();
+  const str_op =
+    day.getDate() + " " + m[day.getMonth()] + " " + day.getFullYear();
   console.log(str_op);
 
   /////////
-  await Tweet.create({
-    content: req.body.content,
-    date: new Date(),
-    author: req.user._id,
-  });
 
-  res.redirect("/");
+  res.json("/");
 }
 
 // Show the form for editing the specified resource.
@@ -57,27 +53,23 @@ async function update(req, res) {}
 
 // Remove the specified resource from storage.
 async function destroy(req, res) {
-  const tweetId = req.params.id;
-  await Tweet.findByIdAndDelete(tweetId);
-  const user = await User.find({ _id: tweetId });
-
-  res.redirect(`/usuarios/${req.user.username}`);
+  res.json(`/usuarios/${req.user.username}`);
 }
 
 async function Addlike(req, res) {
-  let ruta = req.url;
-  let tweet = req.params.id;
-  const newLike = await Tweet.findById(tweet);
-  if (newLike.likes.includes(req.user._id)) {
-    let index = newLike.likes.indexOf(req.user._id);
-    newLike.likes.splice(index, 1);
-    await newLike.save();
-    res.redirect("back");
-  } else {
-    newLike.likes.push(req.user._id);
-    await newLike.save();
-    res.redirect("back");
-  }
+  // let ruta = req.url;
+  // let tweet = req.params.id;
+  // const newLike = await Tweet.findById(tweet);
+  // if (newLike.likes.includes(req.user._id)) {
+  //   let index = newLike.likes.indexOf(req.user._id);
+  //   newLike.likes.splice(index, 1);
+  //   await newLike.save();
+  //   res.redirect("back");
+  // } else {
+  //   newLike.likes.push(req.user._id);
+  //   await newLike.save();
+  //   res.redirect("back");
+  // }
 }
 
 // Otros handlers...

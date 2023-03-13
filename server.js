@@ -1,22 +1,16 @@
 require("dotenv").config();
 const path = require("path");
-const methodOverride = require("method-override");
+
 const express = require("express");
 
-const sessions = require("./sessions");
 const routes = require("./routes");
-const passport = require("./passport");
 
 const APP_PORT = process.env.APP_PORT || 3000;
 const app = express();
 
-app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
-app.set("view engine", "ejs");
 
-sessions(app);
-passport(app);
 routes(app);
 
 app.listen(APP_PORT, () => {
@@ -28,7 +22,9 @@ app.listen(APP_PORT, () => {
 process.on("SIGINT", function () {
   const { mongoose } = require("./db");
   mongoose.connection.close(function () {
-    console.log("Mongoose default connection is disconnected due to application termination.\n");
+    console.log(
+      "Mongoose default connection is disconnected due to application termination.\n"
+    );
     process.exit(0);
   });
 });

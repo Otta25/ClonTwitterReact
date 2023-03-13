@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const tweetsController = require("../controllers/tweetsController");
-var methodOverride = require("method-override");
 
 router.get("/", tweetsController.index);
 //router.get("/crear", tweetsController.create);

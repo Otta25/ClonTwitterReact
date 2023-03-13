@@ -5,7 +5,7 @@ const formatDistanceToNow = require("date-fns/formatDistanceToNow");
 // Display a listing of the resource.
 async function index(req, res) {
   const user = await User.findOne();
-  res.render("pages/profile", { user });
+  res.json("pages/profile", { user });
 }
 
 // Display the specified resource.
@@ -16,7 +16,14 @@ async function show(req, res) {
   const tweets = await Tweet.find({ author: user }).sort({ date: -1 });
   const tweetAuthor = await Tweet.findOne({ author: user }).populate("author");
 
-  res.render("pages/profile", { user, tweets, tweetAuthor, req, users, formatDistanceToNow });
+  res.json("pages/profile", {
+    user,
+    tweets,
+    tweetAuthor,
+    req,
+    users,
+    formatDistanceToNow,
+  });
 }
 
 // Show the form for creating a new resource
@@ -35,13 +42,12 @@ async function update(req, res) {}
 async function destroy(req, res) {}
 
 async function followers(req, res) {
-  const usernameProfile = await User.find({ username: req.params.id });
-  const followsProfile = usernameProfile[0].followers;
-  const follows = await User.find({ _id: followsProfile });
-  const user = await User.find(req.user);
-  const users = await User.find();
-
-  res.render("pages/followers", { follows, req, user, usernameProfile, users });
+  // const usernameProfile = await User.find({ username: req.params.id });
+  // const followsProfile = usernameProfile[0].followers;
+  // const follows = await User.find({ _id: followsProfile });
+  // const user = await User.find(req.user);
+  // const users = await User.find();
+  // res.render("pages/followers", { follows, req, user, usernameProfile, users });
 }
 
 async function following(req, res) {
@@ -51,7 +57,7 @@ async function following(req, res) {
   const user = await User.find(req.user);
   const users = await User.find();
 
-  res.render("pages/following", { follows, req, usernameProfile, users, user });
+  res.json("pages/following", { follows, req, usernameProfile, users, user });
 }
 // Otros handlers...
 // ...
@@ -62,8 +68,12 @@ const followUser = async (req, res) => {
   const userName = req.user.username;
 
   try {
-    const user = await User.findByIdAndUpdate(userId, { $addToSet: { followers: followerId } });
-    await User.findByIdAndUpdate(followerId, { $addToSet: { following: userId } });
+    const user = await User.findByIdAndUpdate(userId, {
+      $addToSet: { followers: followerId },
+    });
+    await User.findByIdAndUpdate(followerId, {
+      $addToSet: { following: userId },
+    });
     return res.redirect("back");
   } catch (error) {
     res.status(500).json({
@@ -80,7 +90,9 @@ const unfollowUser = async (req, res) => {
   const userName = req.user.username;
 
   try {
-    const user = await User.findByIdAndUpdate(userId, { $pull: { followers: followerId } });
+    const user = await User.findByIdAndUpdate(userId, {
+      $pull: { followers: followerId },
+    });
     await User.findByIdAndUpdate(followerId, { $pull: { following: userId } });
     return res.redirect("back");
   } catch (error) {
