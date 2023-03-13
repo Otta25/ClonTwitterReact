@@ -11,20 +11,14 @@
           <h5 class="inline-b fw-semibold mb-1"><%=tweetAuthor.author.firstname%> <%=tweetAuthor.author.lastname%></h5>
           <p class="inline-b font-grey mb-1">@<%= tweetAuthor.author.username%></p>
           <span>•</span>
-          <p class="inline-b font-grey mb-1"> <%=formatDistanceToNow(tweet.date)%> ago</p>
+          <p class="inline-b font-grey mb-1"> ago</p>
           <p class="card-text"><%=tweet.content%></p>
           <div class="d-flex justify-content-between">
             <div id="interact-icon">
               <ul id="interaction-list">
                 <li id="like-icon">
                   <form method="post" action="/tweets/<%=tweet._id%>/addLike">
-                    <button type="submit" id="like-anchor">
-                      <% if(tweet.likes.includes(req.user._id)){ %>
-                        <img id="like" src="/img/heart.svg" alt="" srcset="" />
-                        <% } else { %>
-                        <img id="dislike" src="/img/dislike.svg" alt="" srcset="" />
-                      <% } %>
-                    </button>
+          
                   </form>
                   <span><%=tweet.likes.length%></span>
                 </li>
@@ -39,9 +33,6 @@
                 </li>
               </ul>
             </div>
-            <% if (tweetAuthor.author.username === req.user.username) { %>
-            <a class="me-2" href="/tweets/borrar/<%=tweet._id %>"><img src="/img/delete.svg" alt="" srcset="" /></a>
-            <% } %>
           </div>
         </div>
       </div>
