@@ -40,24 +40,15 @@ async function update(req, res) {}
 async function destroy(req, res) {
   const tweetId = req.params.id;
   await Tweet.findByIdAndDelete(tweetId);
-
-async function Addlike(req, res) {
-  // let ruta = req.url;
-  // let tweet = req.params.id;
-  // const newLike = await Tweet.findById(tweet);
-  // if (newLike.likes.includes(req.user._id)) {
-  //   let index = newLike.likes.indexOf(req.user._id);
-  //   newLike.likes.splice(index, 1);
-  //   await newLike.save();
-  //   res.redirect("back");
-  // } else {
-  //   newLike.likes.push(req.user._id);
-  //   await newLike.save();
-  //   res.redirect("back");
-  // }
 }
 
-async function Addlike(req, res) {}
+async function addlike(req, res) {
+
+}
+
+async function deleteLike(req, res) {
+
+}
 
 module.exports = {
   index,

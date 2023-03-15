@@ -65,7 +65,6 @@ async function following(req, res) {
 const followUser = async (req, res) => {
   const followerId = req.params.id;
   const userId = req.auth.userId;
-  console.log(req.auth);
   try {
     const user = await User.findByIdAndUpdate(userId, {
       $addToSet: { followers: followerId },
@@ -84,10 +83,9 @@ const followUser = async (req, res) => {
 };
 
 const unfollowUser = async (req, res) => {
-  const { userId } = req.body;
-  const followerId = req.user._id;
-  const userName = req.user.username;
-
+  const userId = req.auth.userId;
+  const followerId = req.params.id;  
+  console.log(followerId)
   try {
     const user = await User.findByIdAndUpdate(userId, {
       $pull: { followers: followerId },

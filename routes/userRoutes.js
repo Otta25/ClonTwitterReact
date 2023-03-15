@@ -17,8 +17,7 @@ router.get("/following/:id",checkjwt({ secret: process.env.SESSION_SECRET, algor
 // // Ruta para seguir a un usuario
 // router.post("/followers/follow", userController.followUser);
 
-router.post("/followers/unfollow",userController.unfollowUser);
-router.post("/following/unfollow",userController.unfollowUser);
+router.post("/unfollow/:id",checkjwt({ secret: process.env.SESSION_SECRET, algorithms: ["HS256"] }),userController.unfollowUser);
 router.post("/follow/:id",checkjwt({ secret: process.env.SESSION_SECRET, algorithms: ["HS256"] }), userController.followUser);
 
 module.exports = router;
