@@ -14,7 +14,6 @@ async function showHome(req, res) {
   res.json(user);
 }
 
-//////////////////////
 async function login(req, res) {
   const user = await User.findOne({ username: req.body.username });
   const matchPassword = await bcrypt.compare(req.body.password, user.password);
@@ -24,8 +23,6 @@ async function login(req, res) {
     res.json({ token: token });
   } else res.json("No existe este usuario");
 }
-
-/////////////////////
 
 async function showContact(req, res) {
   res.json("pages/contact");

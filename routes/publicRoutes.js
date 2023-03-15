@@ -11,7 +11,6 @@ const { expressjwt: checkjwt } = require("express-jwt");
 router.get(
   "/",
   checkjwt({ secret: process.env.SESSION_SECRET, algorithms: ["HS256"] }),
-
   pagesController.showHome,
 );
 
