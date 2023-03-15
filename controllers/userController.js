@@ -64,8 +64,8 @@ async function following(req, res) {
 
 const followUser = async (req, res) => {
   const followerId = req.params.id;
+  const userId = req.auth.userId;
   console.log(req.auth);
-
   try {
     const user = await User.findByIdAndUpdate(userId, {
       $addToSet: { followers: followerId },
@@ -73,6 +73,7 @@ const followUser = async (req, res) => {
     await User.findByIdAndUpdate(followerId, {
       $addToSet: { following: userId },
     });
+    res.json(user)
   } catch (error) {
     res.status(500).json({
       success: false,
