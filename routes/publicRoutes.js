@@ -2,14 +2,20 @@ const express = require("express");
 const router = express.Router();
 const pagesController = require("../controllers/pagesController");
 const authController = require("../controllers/authController");
+const ensureAuthenticated = require("../middlewares/ensureAuthenticated");
 
 const User = require("../models/User");
+const jwt = require("jsonwebtoken");
+const { expressjwt: checkjwt } = require("express-jwt");
 
-router.get("/", pagesController.showHome);
+router.get(
+  "/",
+  checkjwt({ secret: process.env.SESSION_SECRET, algorithms: ["HS256"] }),
 
-router.get("/login", pagesController.login);
+  pagesController.showHome,
+);
 
-// router.post("/login", loginCorrect);
+router.post("/login", pagesController.login);
 
 router.get("/sign-up", function (req, res) {
   res.json("pages/sign-up");

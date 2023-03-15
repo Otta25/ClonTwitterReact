@@ -4,14 +4,28 @@ const Tweet = require("../models/Tweet");
 const bcrypt = require("bcryptjs");
 const formatDistanceToNow = require("date-fns/formatDistanceToNow");
 
+const express = require("express");
+const jwt = require("jsonwebtoken");
+const { expressjwt: checkjwt } = require("express-jwt");
+
 async function showHome(req, res) {
-  const user = await User.find();
+  const user = await User.findOne({ _id: req.auth.username._id });
+
   res.json(user);
 }
 
+//////////////////////
 async function login(req, res) {
-  res.json("pages/log-in");
+  const user = await User.findOne({ username: req.body.username });
+  const matchPassword = await bcrypt.compare(req.body.password, user.password);
+
+  if (user && matchPassword) {
+    const token = jwt.sign({ username: user }, process.env.SESSION_SECRET);
+    res.json({ token: token });
+  } else res.json("No existe este usuario");
 }
+
+/////////////////////
 
 async function showContact(req, res) {
   res.json("pages/contact");

@@ -3,7 +3,12 @@
  * https://github.com/jaredhanson/connect-ensure-login
  * creado por el propio autor de Passport.js.
  */
+const jwt = require("jsonwebtoken");
+const { expressjwt: checkjwt } = require("express-jwt");
 
-function ensureAuthenticated(req, res, next) {}
+async function ensureAuthenticated(req, res, next) {
+  checkjwt({ secret: process.env.SESSION_SECRET, algorithms: ["HS256"] });
+  next();
+}
 
 module.exports = ensureAuthenticated;
