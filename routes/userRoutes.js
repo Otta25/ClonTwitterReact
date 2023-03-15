@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
+const ensureAuthenticated = require("../middlewares/ensureAuthenticated");
 
 router.get("/", userController.index);
 // router.get("/crear", userController.create);
@@ -12,19 +13,20 @@ router.get("/:id", userController.show);
 router.get("/followers/:id", userController.followers);
 router.get("/following/:id", userController.following);
 
-// Ruta para seguir a un usuario
-router.post("/followers/follow", userController.followUser);
+// // Ruta para seguir a un usuario
+// router.post("/followers/follow", userController.followUser);
+
 router.post(
   "/followers/unfollow",
 
-  userController.unfollowUser
+  userController.unfollowUser,
 );
 
 router.post(
   "/following/unfollow",
 
-  userController.unfollowUser
+  userController.unfollowUser,
 );
-router.post("/following/follow", userController.followUser);
+router.post("/follow/:id", ensureAuthenticated, userController.followUser);
 
 module.exports = router;
