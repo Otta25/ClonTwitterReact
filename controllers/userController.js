@@ -57,16 +57,15 @@ async function following(req, res) {
   const user = await User.find(req.user);
   const users = await User.find();
 
-  res.json("pages/following", { follows, req, usernameProfile, users, user });
+  res.json({ follows, req, usernameProfile, users, user });
 }
 // Otros handlers...
 // ...
 
 const followUser = async (req, res) => {
-  const { userId } = req.body;
-  const followerId = req.user._id;
-  const userName = req.user.username;
-
+  const followerId = req.params.id;
+  const userId = req.auth.userId;
+  console.log(req.auth);
   try {
     const user = await User.findByIdAndUpdate(userId, {
       $addToSet: { followers: followerId },
@@ -74,7 +73,7 @@ const followUser = async (req, res) => {
     await User.findByIdAndUpdate(followerId, {
       $addToSet: { following: userId },
     });
-    return res.redirect("back");
+    res.json(user)
   } catch (error) {
     res.status(500).json({
       success: false,

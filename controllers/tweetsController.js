@@ -1,6 +1,7 @@
 const Tweet = require("../models/Tweet");
 const User = require("../models/User");
 const lodash = require("lodash");
+const jwt = require("jsonwebtoken");
 
 // Display the specified resource.
 async function index(req, res) {
@@ -40,7 +41,20 @@ async function destroy(req, res) {
   const tweetId = req.params.id;
   await Tweet.findByIdAndDelete(tweetId);
 
-  res.json(`/usuarios`);
+async function Addlike(req, res) {
+  // let ruta = req.url;
+  // let tweet = req.params.id;
+  // const newLike = await Tweet.findById(tweet);
+  // if (newLike.likes.includes(req.user._id)) {
+  //   let index = newLike.likes.indexOf(req.user._id);
+  //   newLike.likes.splice(index, 1);
+  //   await newLike.save();
+  //   res.redirect("back");
+  // } else {
+  //   newLike.likes.push(req.user._id);
+  //   await newLike.save();
+  //   res.redirect("back");
+  // }
 }
 
 async function Addlike(req, res) {}
@@ -53,5 +67,6 @@ module.exports = {
   edit,
   update,
   destroy,
-  Addlike,
+  addlike,
+  deleteLike,
 };
