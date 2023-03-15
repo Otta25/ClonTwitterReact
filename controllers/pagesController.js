@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken");
 const { expressjwt: checkjwt } = require("express-jwt");
 
 async function showHome(req, res) {
-  const user = await User.findOne({ _id: req.auth.username._id });
+  const user = await User.findById(req.auth.userId);
 
   res.json(user);
 }
@@ -20,7 +20,7 @@ async function login(req, res) {
   const matchPassword = await bcrypt.compare(req.body.password, user.password);
 
   if (user && matchPassword) {
-    const token = jwt.sign({ username: user }, process.env.SESSION_SECRET);
+    const token = jwt.sign({ userId: user.id }, process.env.SESSION_SECRET);
     res.json({ token: token });
   } else res.json("No existe este usuario");
 }
