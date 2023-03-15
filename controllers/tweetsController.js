@@ -1,6 +1,7 @@
 const Tweet = require("../models/Tweet");
 const User = require("../models/User");
 const lodash = require("lodash");
+const jwt = require("jsonwebtoken");
 
 // Display the specified resource.
 async function index(req, res) {
@@ -36,8 +37,7 @@ async function store(req, res) {
     "November",
     "December",
   ];
-  const str_op =
-    day.getDate() + " " + m[day.getMonth()] + " " + day.getFullYear();
+  const str_op = day.getDate() + " " + m[day.getMonth()] + " " + day.getFullYear();
   console.log(str_op);
 
   /////////
@@ -56,21 +56,38 @@ async function destroy(req, res) {
   res.json(`/usuarios/${req.user.username}`);
 }
 
-async function Addlike(req, res) {
-  // let ruta = req.url;
-  // let tweet = req.params.id;
-  // const newLike = await Tweet.findById(tweet);
-  // if (newLike.likes.includes(req.user._id)) {
-  //   let index = newLike.likes.indexOf(req.user._id);
-  //   newLike.likes.splice(index, 1);
-  //   await newLike.save();
-  //   res.redirect("back");
-  // } else {
-  //   newLike.likes.push(req.user._id);
-  //   await newLike.save();
-  //   res.redirect("back");
-  // }
+//dar like
+async function addlike(req, res) {
+  const tweet = await Tweet.findByIdAndUpdate(
+    req.body.id,
+    { $addToSet: { likes: req.auth.userId } },
+    { new: true },
+  );
+  res.json(tweet);
 }
+
+//quitar like
+async function deleteLike(req, res) {
+  const tweet = await Tweet.findByIdAndUpdate(
+    req.body.id,
+    { $pull: { likes: req.auth.userId } },
+    { new: true },
+  );
+  res.json(tweet);
+}
+// let ruta = req.url;
+// let tweet = req.params.id;
+// const newLike = await Tweet.findById(tweet);
+// if (newLike.likes.includes(req.user._id)) {
+//   let index = newLike.likes.indexOf(req.user._id);
+//   newLike.likes.splice(index, 1);
+//   await newLike.save();
+//   res.redirect("back");
+// } else {
+//   newLike.likes.push(req.user._id);
+//   await newLike.save();
+//   res.redirect("back");
+// }
 
 // Otros handlers...
 // ...
@@ -83,5 +100,6 @@ module.exports = {
   edit,
   update,
   destroy,
-  Addlike,
+  addlike,
+  deleteLike,
 };
