@@ -10,12 +10,12 @@ router.post("/", tweetsController.store);
 // router.get("/editar/:id", tweetsController.edit);
 // router.patch("/:id", tweetsController.update);
 router.post(
-  "/like",
+  "/:id/likes",
   checkjwt({ secret: process.env.SESSION_SECRET, algorithms: ["HS256"] }),
   tweetsController.addLike,
 );
 router.delete(
-  "/like",
+  "/:id/likes",
   checkjwt({ secret: process.env.SESSION_SECRET, algorithms: ["HS256"] }),
   tweetsController.deleteLike,
 );
