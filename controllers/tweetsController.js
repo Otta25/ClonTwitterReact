@@ -42,12 +42,24 @@ async function destroy(req, res) {
   await Tweet.findByIdAndDelete(tweetId);
 }
 
-async function addlike(req, res) {
-
+//agregar like
+async function addLike(req, res) {
+  const tweet = await Tweet.findByIdAndUpdate(
+    req.params.id,
+    { $addToSet: { likes: req.auth.userId } },
+    { new: true },
+  );
+  res.json(tweet);
 }
 
+//quitar like
 async function deleteLike(req, res) {
-
+  const tweet = await Tweet.findByIdAndUpdate(
+    req.params.id,
+    { $pull: { likes: req.auth.userId } },
+    { new: true },
+  );
+  res.json(tweet);
 }
 
 module.exports = {
@@ -58,6 +70,6 @@ module.exports = {
   edit,
   update,
   destroy,
-  addlike,
+  addLike,
   deleteLike,
 };
