@@ -13,7 +13,7 @@ module.exports = async () => {
   const users = await User.find();
 
   // Crear 10 tweets aleatorios
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 100; i++) {
     // Crear un nuevo tweet con datos aleatorios utilizando Faker
     const tweet = new Tweet({
       content: faker.lorem.sentence(5),

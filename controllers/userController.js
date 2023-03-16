@@ -4,8 +4,8 @@ const formatDistanceToNow = require("date-fns/formatDistanceToNow");
 
 // Display a listing of the resource.
 async function index(req, res) {
-  const user = await User.findOne();
-  res.json("pages/profile", { user });
+  const user = await User.find();
+  res.json({ user });
 }
 
 // Display the specified resource.
@@ -72,7 +72,7 @@ const followUser = async (req, res) => {
     await User.findByIdAndUpdate(followerId, {
       $addToSet: { following: userId },
     });
-    res.json(user)
+    res.json(user);
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -84,8 +84,8 @@ const followUser = async (req, res) => {
 
 const unfollowUser = async (req, res) => {
   const userId = req.auth.userId;
-  const followerId = req.params.id;  
-  console.log(followerId)
+  const followerId = req.params.id;
+  console.log(followerId);
   try {
     const user = await User.findByIdAndUpdate(userId, {
       $pull: { followers: followerId },
