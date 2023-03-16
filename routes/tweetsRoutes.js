@@ -12,7 +12,7 @@ router.post("/", tweetsController.store);
 router.post(
   "/like",
   checkjwt({ secret: process.env.SESSION_SECRET, algorithms: ["HS256"] }),
-  tweetsController.addlike,
+  tweetsController.addLike,
 );
 router.delete(
   "/like",
