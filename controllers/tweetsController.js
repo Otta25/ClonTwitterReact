@@ -11,7 +11,7 @@ async function index(req, res) {
 
 async function show(req, res) {
   const tweetId = req.params.id;
-  const tweet = await Tweet.findById(tweetId);
+  const tweet = await Tweet.findById(tweetId).populate('author');
   res.json(tweet);
 }
 

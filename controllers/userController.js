@@ -13,7 +13,7 @@ async function show(req, res) {
   const id = req.params.id;
   const users = await User.find();
   const user = await User.findById(id);
-  const tweets = await Tweet.find({ author: user }).sort({ date: -1 });
+  const tweets = await Tweet.find({ author: user }).sort({ date: -1 }).populate('author');
   const tweetAuthor = await Tweet.findOne({ author: user }).populate("author");
   const data = { user,tweets}
   res.json({data});
