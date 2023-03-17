@@ -1,6 +1,8 @@
 const User = require("../models/User");
 const Tweet = require("../models/Tweet");
 const formatDistanceToNow = require("date-fns/formatDistanceToNow");
+const formidable = require("formidable");
+const bcrypt = require("bcryptjs");
 
 // Display a listing of the resource.
 async function index(req, res) {
@@ -23,7 +25,22 @@ async function show(req, res) {
 async function create(req, res) {}
 
 // Store a newly created resource in storage.
-async function store(req, res) {}
+async function store(req, res) {
+  const form = formidable({
+    multiples: true,
+    keepExtensions: true,
+  });
+  form.parse(req, async (err, fields, files) => {
+    let password = await bcrypt.hash(fields.password, 8);
+    const user = await User.create({
+      firstname: fields.firstname,
+      lastname: fields.lastname,
+      email: fields.email,
+      username: fields.username,
+      password: password,
+    });
+  });
+}
 
 // Show the form for editing the specified resource.
 async function edit(req, res) {}
