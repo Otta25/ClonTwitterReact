@@ -40,6 +40,7 @@ async function update(req, res) {}
 async function destroy(req, res) {
   const tweetId = req.params.id;
   await Tweet.findByIdAndDelete(tweetId);
+  res.json("tweet eliminado");
 }
 
 //agregar like
