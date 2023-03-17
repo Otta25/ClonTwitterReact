@@ -15,10 +15,10 @@ async function show(req, res) {
   const id = req.params.id;
   const users = await User.find();
   const user = await User.findById(id);
-  const tweets = await Tweet.find({ author: user }).sort({ date: -1 }).populate('author');
+  const tweets = await Tweet.find().sort({ date: -1 }).populate("author");
   const tweetAuthor = await Tweet.findOne({ author: user }).populate("author");
-  const data = { user,tweets}
-  res.json({data});
+  const data = { user, tweets };
+  res.json({ data });
 }
 
 // Show the form for creating a new resource
@@ -32,7 +32,7 @@ async function store(req, res) {
   });
   form.parse(req, async (err, fields, files) => {
     let password = await bcrypt.hash(fields.password, 8);
-    console.log(fields)
+    console.log(fields);
     const user = await User.create({
       firstname: fields.firstname,
       lastname: fields.lastname,
@@ -40,8 +40,8 @@ async function store(req, res) {
       username: fields.username,
       password: password,
     });
-    await user.save()
-    res.json(user)
+    await user.save();
+    res.json(user);
   });
 }
 
