@@ -26,7 +26,7 @@ router.get(
 // router.post("/followers/follow", userController.followUser);
 
 router.delete(
-  "/unfollow/:id",
+  "/follow/:id",
   checkjwt({ secret: process.env.SESSION_SECRET, algorithms: ["HS256"] }),
   userController.unfollowUser,
 );
