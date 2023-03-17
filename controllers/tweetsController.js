@@ -11,7 +11,7 @@ async function index(req, res) {
 
 async function show(req, res) {
   const tweetId = req.params.id;
-  const tweet = await Tweet.findById(tweetId);
+  const tweet = await Tweet.findById(tweetId).populate('author');
   res.json(tweet);
 }
 
@@ -44,6 +44,7 @@ async function destroy(req, res) {
 
 //agregar like
 async function addLike(req, res) {
+  console.log(req.auth.userId);
   const tweet = await Tweet.findByIdAndUpdate(
     req.params.id,
     { $addToSet: { likes: req.auth.userId } },
@@ -54,6 +55,7 @@ async function addLike(req, res) {
 
 //quitar like
 async function deleteLike(req, res) {
+  console.log(req.auth.userId);
   const tweet = await Tweet.findByIdAndUpdate(
     req.params.id,
     { $pull: { likes: req.auth.userId } },
