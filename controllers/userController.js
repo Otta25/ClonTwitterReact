@@ -30,18 +30,26 @@ async function store(req, res) {
     multiples: true,
     keepExtensions: true,
   });
-  form.parse(req, async (err, fields, files) => {
-    let password = await bcrypt.hash(fields.password, 8);
-    const user = await User.create({
-      firstname: fields.firstname,
-      lastname: fields.lastname,
-      email: fields.email,
-      username: fields.username,
-      password: password,
+  try {
+    form.parse(req, async (err, fields, files) => {
+      let password = await bcrypt.hash(fields.password, 8);
+      const user = await User.create({
+        firstname: fields.firstname,
+        lastname: fields.lastname,
+        email: fields.email,
+        username: fields.username,
+        password: password,
+      });
+      await user.save();
+      res.json("User created successfully");
     });
-    await user.save();
-    res.json("User created successfully");
-  });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "User creation failed",
+      error: err.message,
+    });
+  }
 }
 
 // Show the form for editing the specified resource.

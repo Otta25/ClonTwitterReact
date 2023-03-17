@@ -15,13 +15,21 @@ async function showHome(req, res) {
 }
 
 async function login(req, res) {
-  const user = await User.findOne({ username: req.body.username });
-  const matchPassword = await bcrypt.compare(req.body.password, user.password);
+  try {
+    const user = await User.findOne({ username: req.body.username });
+    const matchPassword = await bcrypt.compare(req.body.password, user.password);
 
-  if (user && matchPassword) {
-    const token = jwt.sign({ userId: user.id }, process.env.SESSION_SECRET);
-    res.json({ token: token });
-  } else res.json("No existe este usuario");
+    if (user && matchPassword) {
+      const token = jwt.sign({ userId: user.id }, process.env.SESSION_SECRET);
+      res.json({ token: token });
+    } else res.json("No existe este usuario");
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "User login failed",
+      error: err.message,
+    });
+  }
 }
 
 async function showContact(req, res) {
