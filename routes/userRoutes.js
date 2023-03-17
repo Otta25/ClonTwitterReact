@@ -12,12 +12,12 @@ router.post("/", userController.store);
 // router.patch("/:id", userController.update);
 // router.delete("/:id", userController.destroy);
 router.get(
-  "/followers/:id",
+  "/:id/followers",
   checkjwt({ secret: process.env.SESSION_SECRET, algorithms: ["HS256"] }),
   userController.followers,
 );
 router.get(
-  "/following/:id",
+  "/:id/following",
   checkjwt({ secret: process.env.SESSION_SECRET, algorithms: ["HS256"] }),
   userController.following,
 );
