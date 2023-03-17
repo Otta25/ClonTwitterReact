@@ -28,6 +28,7 @@ async function create(req, res) {}
 async function store(req, res) {
   const form = formidable({
     multiples: true,
+    uploadDir: __dirname + "public/img/userPhotos",
     keepExtensions: true,
   });
   try {
@@ -38,6 +39,7 @@ async function store(req, res) {
         lastname: fields.lastname,
         email: fields.email,
         username: fields.username,
+        profilePhoto: files.img.newFilename,
         password: password,
       });
       await user.save();
@@ -105,7 +107,7 @@ const followUser = async (req, res) => {
 const unfollowUser = async (req, res) => {
   const userId = req.auth.userId;
   const followerId = req.params.id;
-  console.log(followerId);
+
   try {
     const user = await User.findByIdAndUpdate(userId, {
       $pull: { following: followerId },
