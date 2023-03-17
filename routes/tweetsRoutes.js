@@ -24,6 +24,6 @@ router.delete(
   tweetsController.deleteLike,
 );
 
-router.get("/borrar/:id", tweetsController.destroy);
+router.delete("/borrar/:id", tweetsController.destroy);
 
 module.exports = router;
