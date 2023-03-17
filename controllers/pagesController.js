@@ -21,7 +21,7 @@ async function login(req, res) {
 
     if (user && matchPassword) {
       const token = jwt.sign({ userId: user.id }, process.env.SESSION_SECRET);
-      res.json({ token: token });
+      res.json({ token: token, user: { id: user._id, following: user.following } });
     } else res.json("No existe este usuario");
   } catch (err) {
     res.status(500).json({

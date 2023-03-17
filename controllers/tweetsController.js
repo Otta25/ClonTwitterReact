@@ -5,13 +5,13 @@ const jwt = require("jsonwebtoken");
 
 // Display the specified resource.
 async function index(req, res) {
-  const tweets = await Tweet.find().populate("author");
+  const tweets = await Tweet.find().sort({ date: -1 }).populate("author");
   res.json(tweets);
 }
 
 async function show(req, res) {
   const tweetId = req.params.id;
-  const tweet = await Tweet.findById(tweetId).populate('author');
+  const tweet = await Tweet.findById(tweetId).populate("author");
   res.json(tweet);
 }
 
@@ -24,7 +24,7 @@ async function store(req, res) {
   const newTweet = await Tweet.create({
     content: req.body.content,
     date: new Date(),
-    author: req.body.author,
+    author: req.auth.userId,
   });
 
   res.json(newTweet);
