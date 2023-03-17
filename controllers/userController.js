@@ -82,6 +82,7 @@ async function following(req, res) {
 // ...
 
 const followUser = async (req, res) => {
+  console.log("toy");
   const followerId = req.params.id;
   const userId = req.auth.userId;
   try {
