@@ -20,8 +20,6 @@ router.get("/sign-up", function (req, res) {
   res.json("pages/sign-up");
 });
 
-router.post("/sign-up", pagesController.store);
-
 router.get("*", function (req, res) {
   res.status(404).json("pages/404");
 });
