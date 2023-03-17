@@ -7,7 +7,7 @@ const { expressjwt: checkjwt } = require("express-jwt");
 router.get("/", userController.index);
 // router.get("/crear", userController.create);
 router.get("/:id", userController.show);
-// router.post("/", userController.store);
+router.post("/", userController.store);
 // router.get("/editar/:id", userController.edit);
 // router.patch("/:id", userController.update);
 // router.delete("/:id", userController.destroy);
@@ -26,7 +26,7 @@ router.get(
 // router.post("/followers/follow", userController.followUser);
 
 router.delete(
-  "/unfollow/:id",
+  "/follow/:id",
   checkjwt({ secret: process.env.SESSION_SECRET, algorithms: ["HS256"] }),
   userController.unfollowUser,
 );

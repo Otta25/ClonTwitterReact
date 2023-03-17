@@ -60,10 +60,10 @@ const followUser = async (req, res) => {
   const userId = req.auth.userId;
   try {
     const user = await User.findByIdAndUpdate(userId, {
-      $addToSet: { followers: followerId },
+      $addToSet: { following: followerId },
     });
     await User.findByIdAndUpdate(followerId, {
-      $addToSet: { following: userId },
+      $addToSet: { followers: userId },
     });
     res.json(user);
   } catch (error) {
@@ -81,9 +81,9 @@ const unfollowUser = async (req, res) => {
   console.log(followerId);
   try {
     const user = await User.findByIdAndUpdate(userId, {
-      $pull: { followers: followerId },
+      $pull: { following: followerId },
     });
-    await User.findByIdAndUpdate(followerId, { $pull: { following: userId } });
+    await User.findByIdAndUpdate(followerId, { $pull: { followers: userId } });
     return res.redirect("back");
   } catch (error) {
     res.status(500).json({
