@@ -14,7 +14,7 @@ router.get(
   pagesController.showHome,
 );
 
-router.post("/login", pagesController.login);
+router.post("/token", pagesController.login);
 
 router.get("/sign-up", function (req, res) {
   res.json("pages/sign-up");
