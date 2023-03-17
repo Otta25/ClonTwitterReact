@@ -62,22 +62,21 @@ async function update(req, res) {}
 async function destroy(req, res) {}
 
 async function followers(req, res) {
-  // const usernameProfile = await User.find({ username: req.params.id });
-  // const followsProfile = usernameProfile[0].followers;
-  // const follows = await User.find({ _id: followsProfile });
-  // const user = await User.find(req.user);
-  // const users = await User.find();
-  // res.render("pages/followers", { follows, req, user, usernameProfile, users });
+  try {
+    const usuario = await User.findById(req.params.id).populate("followers");
+    res.json(usuario.followers);
+  } catch (error) {
+    res.status(500).json({ mensaje: error.message });
+  }
 }
 
 async function following(req, res) {
-  const usernameProfile = await User.find({ username: req.params.id });
-  const followsProfile = usernameProfile[0].following;
-  const follows = await User.find({ _id: followsProfile });
-  const user = await User.find(req.user);
-  const users = await User.find();
-
-  res.json({ follows, req, usernameProfile, users, user });
+  try {
+    const usuario = await User.findById(req.params.id).populate("following");
+    res.json(usuario.following);
+  } catch (error) {
+    res.status(500).json({ mensaje: error.message });
+  }
 }
 // Otros handlers...
 // ...
