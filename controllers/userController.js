@@ -28,7 +28,7 @@ async function create(req, res) {}
 async function store(req, res) {
   const form = formidable({
     multiples: true,
-    uploadDir: __dirname + "public/img/userPhotos",
+    uploadDir: process.env.APP_DIR_ROUTE + "public/img/userPhotos",
     keepExtensions: true,
   });
   try {
@@ -39,7 +39,7 @@ async function store(req, res) {
         lastname: fields.lastname,
         email: fields.email,
         username: fields.username,
-        profilePhoto: files.img.newFilename,
+        photoProfile: fields.photoProfile,
         password: password,
       });
       await user.save();
