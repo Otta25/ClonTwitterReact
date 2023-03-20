@@ -25,7 +25,7 @@ router.get(
 // // Ruta para seguir a un usuario
 // router.post("/followers/follow", userController.followUser);
 
-router.delete(
+router.post(
   "/:id/unfollow",
   checkjwt({ secret: process.env.SESSION_SECRET, algorithms: ["HS256"] }),
   userController.unfollowUser,
