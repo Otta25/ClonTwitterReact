@@ -28,18 +28,19 @@ async function create(req, res) {}
 async function store(req, res) {
   const form = formidable({
     multiples: true,
-    uploadDir: process.env.APP_DIR_ROUTE + "public/img/userPhotos",
+    uploadDir: __dirname + "public/img/userPhotos",
     keepExtensions: true,
   });
   try {
     form.parse(req, async (err, fields, files) => {
       let password = await bcrypt.hash(fields.password, 8);
+      console.log(files.img)
       const user = await User.create({
         firstname: fields.firstname,
         lastname: fields.lastname,
         email: fields.email,
         username: fields.username,
-        photoProfile: fields.photoProfile,
+        photoProfile: "/img/userPhotos/" + files.img.newFilename,
         password: password,
       });
       await user.save();
