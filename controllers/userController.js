@@ -34,13 +34,13 @@ async function store(req, res) {
   try {
     form.parse(req, async (err, fields, files) => {
       let password = await bcrypt.hash(fields.password, 8);
-      console.log(files.img)
+      console.log(files.img);
       const user = await User.create({
         firstname: fields.firstname,
         lastname: fields.lastname,
         email: fields.email,
         username: fields.username,
-        photoProfile: "/img/userPhotos/" + files.img.newFilename,
+        photoProfile: "https://ionicframework.com/docs/img/demos/avatar.svg",
         password: password,
       });
       await user.save();
