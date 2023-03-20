@@ -10,7 +10,7 @@ const { expressjwt: checkjwt } = require("express-jwt");
 
 async function showHome(req, res) {
   const user = await User.findById(req.auth.userId);
-  console.log(req.auth.userId);
+
   res.json(user);
 }
 
